@@ -187,15 +187,24 @@
   document.getElementById('waitlist-form').addEventListener('submit', function(e) {
     e.preventDefault();
     var email = document.getElementById('email-input').value;
-    var url = 'https://stamptby.us19.list-manage.com/subscribe/post-json?u=1e31fd0abe55c1b5e10bcd489&id=27cf9569c4&f_id=0008abe6f0&EMAIL=' + encodeURIComponent(email) + '&c=mailchimpCallback';
-    var script = document.createElement('script');
-    script.src = url;
-    document.body.appendChild(script);
+    
+    // Show success immediately
     document.getElementById('waitlist-form').style.display = 'none';
     document.querySelector('.fine-print').style.display = 'none';
     document.getElementById('success-msg').style.display = 'block';
+    
+    // Submit to Mailchimp silently in background via JSONP
+    var script = document.createElement('script');
+    window.mcCallback = function(data) {};
+    var url = 'https://stamptby.us19.list-manage.com/subscribe/post-json'
+      + '?u=1e31fd0abe55c1b5e10bcd489'
+      + '&id=27cf9569c4'
+      + '&f_id=0008abe6f0'
+      + '&EMAIL=' + encodeURIComponent(email)
+      + '&c=mcCallback';
+    script.src = url;
+    document.head.appendChild(script);
   });
-  function mailchimpCallback(resp) {}
 </script>
 
 </body>
