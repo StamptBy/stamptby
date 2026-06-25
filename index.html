@@ -133,14 +133,12 @@
 
   <p class="hero-body">StamptBy is the first platform where travel creators build shoppable storefronts &mdash; so you can book the exact trip you saw, with the best deals, all in one place.</p>
 
-  <form class="waitlist" action="https://stamptby.us19.list-manage.com/subscribe/post?u=1e31fd0abe55c1b5e10bcd489&amp;id=27cf9569c4&amp;f_id=0008abe6f0" method="post" target="_blank">
-    <input type="email" name="EMAIL" placeholder="your@email.com" required>
-    <div style="position:absolute;left:-5000px" aria-hidden="true">
-      <input type="text" name="b_1e31fd0abe55c1b5e10bcd489_27cf9569c4" tabindex="-1" value="">
-    </div>
+  <form class="waitlist" id="waitlist-form">
+    <input type="email" id="email-input" placeholder="your@email.com" required>
     <button type="submit">Get Early Access</button>
   </form>
   <p class="fine-print">No spam, ever. Unsubscribe anytime.</p>
+  <p class="success-msg" id="success-msg">You&rsquo;re in. See you soon &#9992;</p>
 </section>
 
 <div class="divider">
@@ -184,7 +182,20 @@
   <span class="footer-copy">&copy; 2026 StamptBy. All rights reserved.</span>
 </footer>
 
-<script></script>
+<script>
+  document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var email = document.getElementById('email-input').value;
+    var url = 'https://stamptby.us19.list-manage.com/subscribe/post-json?u=1e31fd0abe55c1b5e10bcd489&id=27cf9569c4&f_id=0008abe6f0&EMAIL=' + encodeURIComponent(email) + '&c=mailchimpCallback';
+    var script = document.createElement('script');
+    script.src = url;
+    document.body.appendChild(script);
+    document.getElementById('waitlist-form').style.display = 'none';
+    document.querySelector('.fine-print').style.display = 'none';
+    document.getElementById('success-msg').style.display = 'block';
+  });
+  function mailchimpCallback(resp) {}
+</script>
 
 </body>
 </html>
