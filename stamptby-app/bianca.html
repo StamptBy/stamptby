@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bianca Carolina — StamptBy</title>
-  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAMAEBAAAAAAIACPAQAANgAAABgYAAAAACAAbgIAAMUBAAAgIAAAAAAgAEUDAAAzBAAAiVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAABVklEQVR4nJWSTUsCURSG78eM3vGrLFqI0MeuXEhE7aVo0SJtH7W0fxJUUv0aaRMRtG0xNdkItpGCorAZG+81nHtPC2EUK9SzOgfeh3Ne3oNbnoPGKTKW+l8AAKSUowIAwBiLJyYwxkMAUEpKSQixrEq5fME5V0oBwN8AAIQNgzFmRBKi3S4WD7gQsXhyYI8WqHVNf7KrL69vgFCchTIL8zdX18K/3MlvGxFDAeB+QCkVYpHToxOP88lkcmtzA/l+anrq+Oy89lA5LJW+PJcS0jsJYyz970Ih33j/qNm257U8Lpaz2fVczjRNhBH+fRKh4btqdWVt1XXdNsYzc7O3j7Z5b+3u7ymlAg+4mzQAUEobn47rONFoLJ1ONZvNev1Z07XM0iLnPLCOg9cAAF3TqEalVJ1Oh1Kq6zpCSAhBCBncEDCBJQDojv3qnodA198PT3qUGhv4AdYApfk3OuB5AAAAAElFTkSuQmCC">
+  <link rel="icon" type="image/svg+xml" href="AAABAAMAEBAAAAAAIACPAQAANgAAABgYAAAAACAAbgIAAMUBAAAgIAAAAAAgAEUDAAAzBAAAiVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAABVklEQVR4nJWSTUsCURSG78eM3vGrLFqI0MeuXEhE7aVo0SJtH7W0fxJUUv0aaRMRtG0xNdkItpGCorAZG+81nHtPC2EUK9SzOgfeh3Ne3oNbnoPGKTKW+l8AAKSUowIAwBiLJyYwxkMAUEpKSQixrEq5fME5V0oBwN8AAIQNgzFmRBKi3S4WD7gQsXhyYI8WqHVNf7KrL69vgFCchTIL8zdX18K/3MlvGxFDAeB+QCkVYpHToxOP88lkcmtzA/l+anrq+Oy89lA5LJW+PJcS0jsJYyz970Ih33j/qNm257U8Lpaz2fVczjRNhBH+fRKh4btqdWVt1XXdNsYzc7O3j7Z5b+3u7ymlAg+4mzQAUEobn47rONFoLJ1ONZvNev1Z07XM0iLnPLCOg9cAAF3TqEalVJ1Oh1Kq6zpCSAhBCBncEDCBJQDojv3qnodA198PT3qUGhv4AdYApfk3OuB5AAAAAElFTkSuQmCC">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=Dancing+Script:wght@600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -221,15 +221,15 @@
     .pick-btn:hover { background: var(--brown); color: white; }
 
     /* ── MAP ── */
-    .map-wrap { background: #1a2a3a; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); position: relative; }
+    .map-wrap { background: #2a1e10; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); position: relative; }
     .map-wrap svg { display: block; width: 100%; height: auto; }
-    .map-stat-bar { display: flex; background: #132030; border-top: 1px solid rgba(255,255,255,0.08); }
+    .map-stat-bar { display: flex; background: #1a1008; border-top: 1px solid rgba(155,106,53,0.25); }
     .map-stat { flex: 1; padding: 14px 10px; text-align: center; border-right: 1px solid rgba(255,255,255,0.06); }
     .map-stat:last-child { border-right: none; }
     .map-stat-num { font-family: "Playfair Display", serif; font-size: 1.2rem; font-weight: 900; color: var(--cream); }
-    .map-stat-label { font-size: 0.58rem; color: rgba(221,212,184,0.5); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+    .map-stat-label { font-size: 0.58rem; color: rgba(155,106,53,0.7); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
     .map-tooltip {
-      position: absolute; background: rgba(13,10,8,0.92); color: white;
+      position: absolute; background: rgba(26,16,8,0.95); color: var(--cream);
       padding: 8px 12px; border-radius: 8px; font-size: 0.75rem; font-family: "DM Sans", sans-serif;
       pointer-events: none; opacity: 0; transition: opacity 0.15s; white-space: nowrap; z-index: 10;
       border: 1px solid rgba(155,106,53,0.4);
@@ -463,7 +463,7 @@
   <div style="margin-top:40px;">
     <div class="section-header">
       <div class="section-title">Bianca's World Map</div>
-      <div class="section-count">5 countries &nbsp;&middot;&nbsp; 18 trips</div>
+      <div class="section-count">8 cities &nbsp;&middot;&nbsp; <span style="font-size:0.7rem;opacity:0.6;font-weight:400;">scroll or pinch to zoom &nbsp;&middot;&nbsp; tap a pin</span></div>
     </div>
     <div class="map-wrap" id="mapWrap">
       <div class="map-tooltip" id="mapTooltip"></div>
@@ -534,26 +534,29 @@
     });
   });
 
-  // ── MAP ──
-  const visited = {
-    840: { name: 'United States', emoji: '🇺🇸', trips: 8, highlight: 'NYC, Chicago, Miami, SF & more' },
-    630: { name: 'Puerto Rico',   emoji: '🇵🇷', trips: 1, highlight: 'San Juan girlfriend getaway' },
-    484: { name: 'Mexico',        emoji: '🇲🇽', trips: 1, highlight: 'Colima & Comala' },
-    250: { name: 'France',        emoji: '🇫🇷', trips: 1, highlight: 'Nice & Monaco euro summer' },
-    380: { name: 'Italy',         emoji: '🇮🇹', trips: 1, highlight: 'Rome, Pisa & Florence' },
-  };
+  // ── MAP — city pins, brand colors, zoom/pan ──
+  const cities = [
+    { name: 'New York City', emoji: '🗽', trips: 4, note: 'NYC Long Weekend',    lng: -74.006,  lat: 40.713 },
+    { name: 'Chicago',       emoji: '🏙️', trips: 1, note: 'Chicago in 3 Days',  lng: -87.630,  lat: 41.878 },
+    { name: 'Miami',         emoji: '🌴', trips: 1, note: 'Miami Girls Trip',    lng: -80.192,  lat: 25.762 },
+    { name: 'San Juan',      emoji: '🌊', trips: 1, note: 'Puerto Rico Getaway', lng: -66.106,  lat: 18.466 },
+    { name: 'Nice',          emoji: '🇫🇷', trips: 1, note: 'Nice & Monaco',      lng:   7.262,  lat: 43.710 },
+    { name: 'Rome',          emoji: '🏛️', trips: 1, note: 'Rome & Florence',    lng:  12.496,  lat: 41.903 },
+    { name: 'Florence',      emoji: '🎨', trips: 1, note: 'Pisa & Florence',     lng:  11.256,  lat: 43.770 },
+    { name: 'Colima',        emoji: '🌋', trips: 1, note: 'Colima & Comala',     lng:-103.724,  lat: 19.245 },
+  ];
 
   async function buildMap() {
     const container = document.getElementById('mapSvgContainer');
     const W = 960, H = 500;
-    container.innerHTML = `<div style="height:280px;display:flex;align-items:center;justify-content:center;color:rgba(221,212,184,0.4);font-family:'DM Sans',sans-serif;font-size:14px;">Loading map…</div>`;
+    container.innerHTML = '<div style="height:280px;display:flex;align-items:center;justify-content:center;color:rgba(155,106,53,0.5);font-family:DM Sans,sans-serif;font-size:14px;background:#2a1e10;">Loading map…</div>';
 
     let topo;
     try {
       const res = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
       topo = await res.json();
     } catch(e) {
-      container.innerHTML = `<div style="height:200px;display:flex;align-items:center;justify-content:center;color:rgba(221,212,184,0.4);font-size:13px;">Map unavailable</div>`;
+      container.innerHTML = '<div style="height:200px;display:flex;align-items:center;justify-content:center;color:rgba(155,106,53,0.5);font-size:13px;">Map unavailable</div>';
       return;
     }
 
@@ -565,94 +568,131 @@
     container.innerHTML = '';
     const projection = d3.geoNaturalEarth1().scale(153).translate([W/2, H/2]);
     const path = d3.geoPath().projection(projection);
+
     const svg = d3.select(container).append('svg')
       .attr('viewBox', `0 0 ${W} ${H}`)
       .style('display','block').style('width','100%').style('height','auto')
-      .style('touch-action','pan-y');
+      .style('cursor','grab').style('touch-action','none');
 
     const defs = svg.append('defs');
-    defs.append('radialGradient').attr('id','ogB').call(g => {
-      g.append('stop').attr('offset','0%').attr('stop-color','#1e3448');
-      g.append('stop').attr('offset','100%').attr('stop-color','#0d1b2a');
+    defs.append('linearGradient').attr('id','oceanGrad').attr('x1','0').attr('y1','0').attr('x2','0').attr('y2','1').call(g => {
+      g.append('stop').attr('offset','0%').attr('stop-color','#2a1e10');
+      g.append('stop').attr('offset','100%').attr('stop-color','#1a1008');
     });
-    defs.append('filter').attr('id','pgB').call(f => {
-      f.append('feGaussianBlur').attr('stdDeviation','2.5').attr('result','blur');
+    defs.append('filter').attr('id','pinGlow').call(f => {
+      f.append('feGaussianBlur').attr('stdDeviation','3').attr('result','blur');
       f.append('feMerge').call(m => { m.append('feMergeNode').attr('in','blur'); m.append('feMergeNode').attr('in','SourceGraphic'); });
     });
 
-    svg.append('rect').attr('width',W).attr('height',H).attr('fill','url(#ogB)');
-    svg.append('path').datum(d3.geoGraticule().step([30,30])()).attr('d',path).attr('fill','none').attr('stroke','rgba(255,255,255,0.04)').attr('stroke-width',0.5);
-    svg.append('path').datum({type:'Sphere'}).attr('d',path).attr('fill','none').attr('stroke','rgba(255,255,255,0.08)').attr('stroke-width',1);
+    svg.append('rect').attr('width',W).attr('height',H).attr('fill','url(#oceanGrad)');
+    svg.append('path')
+      .datum(d3.geoGraticule().step([30,30])())
+      .attr('d', path).attr('fill','none')
+      .attr('stroke','rgba(155,106,53,0.12)').attr('stroke-width',0.6);
+    svg.append('path').datum({type:'Sphere'}).attr('d',path)
+      .attr('fill','none').attr('stroke','rgba(155,106,53,0.25)').attr('stroke-width',1);
 
     const countries = topojson.feature(topo, topo.objects.countries);
     const tooltip = document.getElementById('mapTooltip');
     const mapWrap = document.getElementById('mapWrap');
 
-    function showTip(clientX, clientY, v) {
-      const rect = mapWrap.getBoundingClientRect();
-      tooltip.innerHTML = `<strong>${v.emoji} ${v.name}</strong><span>${v.trips} trip${v.trips>1?'s':''} · “${v.highlight}”</span>`;
-      let left = clientX - rect.left + 14;
-      if (left + 210 > rect.width) left = clientX - rect.left - 210;
-      tooltip.style.left = Math.max(4, left) + 'px';
-      tooltip.style.top = Math.max(4, clientY - rect.top - 48) + 'px';
-      tooltip.style.opacity = '1';
-    }
+    const g = svg.append('g');
 
-    svg.selectAll('.country')
+    // Land — warm parchment
+    g.selectAll('.land')
       .data(countries.features)
       .join('path')
-      .attr('class', d => visited[+d.id] ? 'country vc' : 'country')
+      .attr('class','land')
       .attr('d', path)
-      .attr('fill', d => visited[+d.id] ? 'rgba(155,106,53,0.82)' : 'rgba(255,255,255,0.07)')
-      .attr('stroke', d => visited[+d.id] ? '#c4864a' : 'rgba(255,255,255,0.13)')
-      .attr('stroke-width', d => visited[+d.id] ? 0.8 : 0.4)
-      .style('cursor', d => visited[+d.id] ? 'pointer' : 'default')
-      .on('mousemove', function(event, d) {
-        const v = visited[+d.id]; if (!v) return;
-        showTip(event.clientX, event.clientY, v);
-      })
-      .on('mouseleave', () => { tooltip.style.opacity='0'; })
-      .on('touchstart', function(event, d) {
-        const v = visited[+d.id]; if (!v) return;
-        event.preventDefault();
-        const t = event.touches[0];
-        showTip(t.clientX, t.clientY, v);
-        setTimeout(() => { tooltip.style.opacity='0'; }, 2800);
-      }, { passive: false });
+      .attr('fill','#c8b590')
+      .attr('stroke','#a8956a')
+      .attr('stroke-width',0.4);
 
-    svg.append('path')
+    g.append('path')
       .datum(topojson.mesh(topo, topo.objects.countries, (a,b) => a!==b))
-      .attr('d',path).attr('fill','none').attr('stroke','rgba(255,255,255,0.08)').attr('stroke-width',0.3);
+      .attr('d', path).attr('fill','none')
+      .attr('stroke','rgba(168,149,106,0.5)').attr('stroke-width',0.3);
 
     const pinCSS = document.createElement('style');
     pinCSS.textContent = `
-      @keyframes pbB { 0%{r:7;opacity:.7} 100%{r:20;opacity:0} }
-      .pp-b { animation: pbB 2.4s ease-out infinite; }
-      .pg-b:nth-child(2n) .pp-b { animation-delay:.5s; }
-      .pg-b:nth-child(3n) .pp-b { animation-delay:1s; }
-      .vc { transition: fill .2s; }
-      .vc:hover { fill: rgba(196,134,74,0.95) !important; }
+      @keyframes cityPulse { 0%{r:9;opacity:.6} 100%{r:22;opacity:0} }
+      .city-pulse { animation: cityPulse 2.6s ease-out infinite; }
+      .city-pin-g:nth-child(2n) .city-pulse { animation-delay:.6s; }
+      .city-pin-g:nth-child(3n) .city-pulse { animation-delay:1.2s; }
+      .city-pin-g:nth-child(5n) .city-pulse { animation-delay:1.8s; }
+      .city-pin-g { cursor: pointer; }
+      .city-pin-g:hover .city-dot { fill: #8B3535 !important; }
     `;
     document.head.appendChild(pinCSS);
 
-    Object.entries(visited).forEach(([id, v]) => {
-      const feat = countries.features.find(f => +f.id === +id);
-      if (!feat) return;
-      const c = path.centroid(feat);
-      if (!c || isNaN(c[0])) return;
-      const [px, py] = c;
-      const g = svg.append('g').attr('class','pg-b').style('cursor','pointer');
-      g.on('mousemove', e => showTip(e.clientX, e.clientY, v))
-       .on('mouseleave', () => { tooltip.style.opacity='0'; })
-       .on('touchstart', e => {
-         e.preventDefault();
-         const t = e.touches[0];
-         showTip(t.clientX, t.clientY, v);
-         setTimeout(() => { tooltip.style.opacity='0'; }, 2800);
-       }, { passive: false });
-      g.append('circle').attr('cx',px).attr('cy',py).attr('r',7).attr('fill','rgba(155,106,53,0.25)').attr('class','pp-b');
-      g.append('circle').attr('cx',px).attr('cy',py).attr('r',6).attr('fill','rgba(196,134,74,0.3)').attr('filter','url(#pgB)');
-      g.append('circle').attr('cx',px).attr('cy',py).attr('r',4).attr('fill','#9B6A35').attr('stroke','#DDD4B8').attr('stroke-width',1.5).attr('filter','url(#pgB)');
+    function showTip(clientX, clientY, city) {
+      const rect = mapWrap.getBoundingClientRect();
+      tooltip.innerHTML = `<strong>${city.emoji} ${city.name}</strong><span>${city.trips} trip${city.trips>1?'s':''} · ${city.note}</span>`;
+      let left = clientX - rect.left + 14;
+      if (left + 220 > rect.width) left = clientX - rect.left - 220;
+      tooltip.style.left = Math.max(4, left) + 'px';
+      tooltip.style.top = Math.max(4, clientY - rect.top - 52) + 'px';
+      tooltip.style.opacity = '1';
+    }
+
+    function zoomToCity(city) {
+      const [cx, cy] = projection([city.lng, city.lat]);
+      const scale = 6;
+      const tx = W/2 - scale * cx;
+      const ty = H/2 - scale * cy;
+      svg.transition().duration(700).ease(d3.easeCubicInOut)
+        .call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(scale));
+    }
+
+    cities.forEach(city => {
+      const [px, py] = projection([city.lng, city.lat]);
+      const pg = g.append('g').attr('class','city-pin-g');
+      pg.append('circle').attr('class','city-pulse')
+        .attr('cx',px).attr('cy',py).attr('r',9).attr('fill','rgba(139,53,53,0.3)');
+      pg.append('circle').attr('cx',px).attr('cy',py).attr('r',7)
+        .attr('fill','rgba(139,53,53,0.2)').attr('filter','url(#pinGlow)');
+      pg.append('circle').attr('class','city-dot')
+        .attr('cx',px).attr('cy',py).attr('r',5)
+        .attr('fill','#8B3535').attr('stroke','#DDD4B8').attr('stroke-width',1.5)
+        .attr('filter','url(#pinGlow)');
+      pg.append('text')
+        .attr('x', px).attr('y', py - 10)
+        .attr('text-anchor','middle')
+        .attr('font-family','DM Sans, sans-serif').attr('font-size','9px')
+        .attr('font-weight','500').attr('fill','#DDD4B8')
+        .attr('paint-order','stroke').attr('stroke','#1a1008').attr('stroke-width','3')
+        .text(city.name);
+      pg.on('mousemove', e => showTip(e.clientX, e.clientY, city))
+        .on('mouseleave', () => { tooltip.style.opacity='0'; })
+        .on('touchstart', e => {
+          e.preventDefault();
+          const t = e.touches[0];
+          showTip(t.clientX, t.clientY, city);
+          setTimeout(() => { tooltip.style.opacity='0'; }, 2800);
+        }, { passive: false })
+        .on('click', () => zoomToCity(city));
+    });
+
+    const zoom = d3.zoom().scaleExtent([1, 12])
+      .on('zoom', e => {
+        g.attr('transform', e.transform);
+        svg.style('cursor', e.transform.k > 1 ? 'grabbing' : 'grab');
+        const k = e.transform.k;
+        g.selectAll('.city-dot').attr('r', 5 / Math.sqrt(k));
+        g.selectAll('.land').attr('stroke-width', 0.4 / k);
+        g.selectAll('.city-pin-g text').attr('font-size', 9 / Math.sqrt(k) + 'px');
+      });
+    svg.call(zoom);
+    svg.on('dblclick.zoom', null);
+    svg.on('dblclick', () => svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity));
+
+    document.querySelectorAll('[data-city]').forEach(el => {
+      el.addEventListener('click', () => {
+        const city = cities.find(c => c.name === el.dataset.city);
+        if (!city) return;
+        document.getElementById('mapWrap').scrollIntoView({behavior:'smooth', block:'center'});
+        setTimeout(() => zoomToCity(city), 400);
+      });
     });
   }
 
