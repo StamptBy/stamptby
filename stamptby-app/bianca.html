@@ -94,20 +94,24 @@
     .social-link:hover { border-color: var(--brown); color: var(--brown); }
 
     /* ── TABS ── */
-    .tabs-bar {
+    .filter-bar {
       position: sticky; top: 65px; z-index: 90;
       background: rgba(245,241,234,0.96); backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
-      display: flex; overflow-x: auto; scrollbar-width: none; padding: 0 24px;
-      margin-top: 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; gap: 12px; flex-wrap: wrap;
     }
-    .tabs-bar::-webkit-scrollbar { display: none; }
+    .tabs-row {
+      display: flex; overflow-x: auto; scrollbar-width: none; flex: 1;
+    }
+    .tabs-row::-webkit-scrollbar { display: none; }
     .tab {
-      padding: 14px 18px; font-size: 0.76rem; font-weight: 500; letter-spacing: 0.06em;
+      padding: 14px 16px; font-size: 0.76rem; font-weight: 500; letter-spacing: 0.05em;
       color: var(--mid); cursor: pointer; border-bottom: 2px solid transparent;
       margin-bottom: -1px; transition: color 0.2s, border-color 0.2s; white-space: nowrap;
     }
     .tab.active { color: var(--brown); border-bottom-color: var(--brown); font-weight: 600; }
+    .filter-sort { display: flex; align-items: center; gap: 6px; padding: 10px 0; flex-shrink: 0; }
 
     /* ── CONTENT ── */
     .content { max-width: 980px; margin: 0 auto; padding: 32px 24px 80px; }
@@ -152,7 +156,6 @@
     .btn-save:hover { background: var(--brown); color: white; }
 
     /* ── SORT ── */
-    .sort-bar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
     .sort-label { font-size: 0.72rem; color: var(--mid); font-weight: 500; }
     .sort-btn {
       padding: 5px 12px; border-radius: 20px; border: 1.5px solid var(--border);
@@ -327,21 +330,29 @@
   </div>
 </div>
 
-<div class="tabs-bar">
-  <div class="tab active">All Trips</div>
-  <div class="tab">USA</div>
-  <div class="tab">International</div>
-  <div class="tab">Holiday</div>
-  <div class="tab">Top Stays</div>
+<div class="filter-bar">
+  <div class="tabs-row">
+    <div class="tab active" data-filter="all">All Trips</div>
+    <div class="tab" data-filter="usa">USA</div>
+    <div class="tab" data-filter="international">International</div>
+    <div class="tab" data-filter="holiday">Holiday</div>
+    <div class="tab" data-filter="stays">Top Stays</div>
+  </div>
+  <div class="filter-sort">
+    <span class="sort-label">Sort:</span>
+    <button class="sort-btn" data-sort="price-asc">Price &#8593;</button>
+    <button class="sort-btn" data-sort="price-desc">Price &#8595;</button>
+    <button class="sort-btn" data-sort="likes-desc">&#9825; Most Saved</button>
+  </div>
 </div>
 
 <div class="content">
 
   <div class="section-header" style="margin-top:4px;">
-    <div class="section-title">Featured Trip</div>
+    <div class="section-title" id="sectionTitle">Featured Trip</div>
   </div>
 
-  <div class="featured-card" id="trip-nyc">
+  <div class="featured-card" id="trip-nyc" data-tags="usa holiday">
     <div class="featured-img">
       <div class="featured-img-emoji">🇺🇸</div>
       <div class="featured-label">&#11088; Most Saved</div>
@@ -365,18 +376,12 @@
     </div>
   </div>
 
-  <div class="section-header">
-    <div class="section-title">All Trips <span style="font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:400;color:var(--mid);">&nbsp;&middot;&nbsp; 18 trips</span></div>
-    <div class="sort-bar">
-      <span class="sort-label">Sort:</span>
-      <button class="sort-btn" data-sort="price-asc">Price &#8593;</button>
-      <button class="sort-btn" data-sort="price-desc">Price &#8595;</button>
-      <button class="sort-btn" data-sort="likes-desc">&#9825; Most Saved</button>
-    </div>
+  <div class="section-header" id="tripsHeader" style="margin-top:28px;">
+    <div class="section-title" id="tripsTitle">All Trips <span id="tripCount" style="font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:400;color:var(--mid);">&nbsp;&middot;&nbsp; 6 trips</span></div>
   </div>
 
   <div class="trip-grid">
-    <div class="trip-card" id="trip-chicago" data-price="490" data-likes="892">
+    <div class="trip-card" id="trip-chicago" data-tags="usa" data-price="490" data-likes="892">
       <div class="trip-card-img" style="background:linear-gradient(135deg,#e8d5a3,#c4a87a);">&#127482;&#127480;
         <div class="card-tag">3 days</div><div class="card-saves">&#9825; 892</div>
       </div>
@@ -387,7 +392,7 @@
         <div class="trip-card-footer"><div class="trip-price">from $490<span class="trip-price-sub"> /person</span></div><button class="btn-card-book">Book</button></div>
       </div>
     </div>
-    <div class="trip-card" id="trip-miami" data-price="680" data-likes="541">
+    <div class="trip-card" id="trip-miami" data-tags="usa holiday" data-price="680" data-likes="541">
       <div class="trip-card-img" style="background:linear-gradient(135deg,#c9d8e8,#7a9ec4);">&#127796;
         <div class="card-tag">5 days</div><div class="card-saves">&#9825; 541</div>
       </div>
@@ -398,7 +403,7 @@
         <div class="trip-card-footer"><div class="trip-price">from $680<span class="trip-price-sub"> /person</span></div><button class="btn-card-book">Book</button></div>
       </div>
     </div>
-    <div class="trip-card" id="trip-sanjuan" data-price="820" data-likes="703">
+    <div class="trip-card" id="trip-sanjuan" data-tags="international holiday" data-price="820" data-likes="703">
       <div class="trip-card-img" style="background:linear-gradient(135deg,#e8d5c9,#c4987a);">&#127477;&#127479;
         <div class="card-tag">4 days</div><div class="card-saves">&#9825; 703</div>
       </div>
@@ -409,7 +414,7 @@
         <div class="trip-card-footer"><div class="trip-price">from $820<span class="trip-price-sub"> /person</span></div><button class="btn-card-book">Book</button></div>
       </div>
     </div>
-    <div class="trip-card" id="trip-nice" data-price="1100" data-likes="448">
+    <div class="trip-card" id="trip-nice" data-tags="international" data-price="1100" data-likes="448">
       <div class="trip-card-img" style="background:linear-gradient(135deg,#c9d4e8,#6a7fc4);">&#127467;&#127479;
         <div class="card-tag">6 days</div><div class="card-saves">&#9825; 448</div>
       </div>
@@ -420,7 +425,7 @@
         <div class="trip-card-footer"><div class="trip-price">from $1,100<span class="trip-price-sub"> /person</span></div><button class="btn-card-book">Book</button></div>
       </div>
     </div>
-    <div class="trip-card" id="trip-italy" data-price="950" data-likes="612">
+    <div class="trip-card" id="trip-italy" data-tags="international" data-price="950" data-likes="612">
       <div class="trip-card-img" style="background:linear-gradient(135deg,#e8c9c9,#c47a7a);">&#127470;&#127481;
         <div class="card-tag">7 days</div><div class="card-saves">&#9825; 612</div>
       </div>
@@ -527,10 +532,60 @@
     });
   });
 
+  // Tab filtering
+  const featured = document.querySelector('.featured-card');
+  const featuredSection = document.querySelector('.section-header[style*="margin-top:4px"]');
+  const staysSection = document.querySelector('[style*="margin-top:40px"]'); // Top Stays
+  const tripsHeader = document.getElementById('tripsHeader');
+  const tripCount = document.getElementById('tripCount');
+
+  function filterCards(filter) {
+    const allCards = [...document.querySelectorAll('.trip-card')];
+
+    // Show/hide featured
+    if (featured) {
+      const showFeatured = (filter === 'all' || filter === 'usa' || filter === 'holiday');
+      featured.style.display = showFeatured ? '' : 'none';
+      if (featuredSection) featuredSection.style.display = showFeatured ? '' : 'none';
+    }
+
+    // Show/hide Top Stays section
+    const staysSections = document.querySelectorAll('.content > div[style*="margin-top:40px"]');
+    staysSections.forEach(sec => {
+      if (sec.querySelector('.picks-scroll')) {
+        sec.style.display = (filter === 'all' || filter === 'stays') ? '' : 'none';
+      }
+    });
+
+    // Filter trip cards
+    let visible = 0;
+    allCards.forEach(card => {
+      const tags = (card.dataset.tags || '').split(' ');
+      const show = filter === 'all' || filter === 'stays' ? true : tags.includes(filter);
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    // Update count
+    if (tripCount) tripCount.textContent = ` ·  ${visible} trip${visible !== 1 ? 's' : ''}`;
+    if (tripsHeader) tripsHeader.style.display = (filter === 'stays') ? 'none' : '';
+
+    // Animate visible cards
+    const visCards = allCards.filter(c => c.style.display !== 'none');
+    visCards.forEach((c, i) => {
+      c.style.opacity = '0'; c.style.transform = 'translateY(8px)';
+      setTimeout(() => {
+        c.style.transition = 'opacity .22s, transform .22s';
+        c.style.opacity = '1'; c.style.transform = '';
+      }, i * 35);
+    });
+  }
+
   document.querySelectorAll('.tab').forEach(tab => {
     tab.addEventListener('click', function() {
       document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
       this.classList.add('active');
+      filterCards(this.dataset.filter);
     });
   });
 
