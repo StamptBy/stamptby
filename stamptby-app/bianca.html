@@ -310,7 +310,7 @@
   </div>
   <div class="profile-name">Bianca Carolina</div>
   <div class="profile-handle">@bianca.carolina &nbsp;&middot;&nbsp; Founding Creator</div>
-  <div class="profile-bio">San Diego (but always anywhere else) ✈️ — Mid-range city trips, holiday getaways, and the best spots you'll actually want to visit. 3.2M likes don't lie.</div>
+  <div class="profile-bio">San Diego (but always anywhere else) ✈️</div>
   <div class="profile-stats">
     <div class="stat"><div class="stat-num">18</div><div class="stat-label">Trips</div></div>
     <div class="stat"><div class="stat-num">284K</div><div class="stat-label">Followers</div></div>
@@ -470,7 +470,7 @@
       <div id="mapSvgContainer"></div>
       <div class="map-stat-bar">
         <div class="map-stat"><div class="map-stat-num">5</div><div class="map-stat-label">Countries</div></div>
-        <div class="map-stat"><div class="map-stat-num">3</div><div class="map-stat-label">Continents</div></div>
+        
         <div class="map-stat"><div class="map-stat-num">18</div><div class="map-stat-label">Trips</div></div>
         <div class="map-stat"><div class="map-stat-num">22K</div><div class="map-stat-label">Miles</div></div>
       </div>
@@ -585,18 +585,19 @@
     });
 
     svg.append('rect').attr('width',W).attr('height',H).attr('fill','url(#oceanGrad)');
-    svg.append('path')
-      .datum(d3.geoGraticule().step([30,30])())
-      .attr('d', path).attr('fill','none')
-      .attr('stroke','rgba(155,106,53,0.12)').attr('stroke-width',0.6);
-    svg.append('path').datum({type:'Sphere'}).attr('d',path)
-      .attr('fill','none').attr('stroke','rgba(155,106,53,0.25)').attr('stroke-width',1);
-
     const countries = topojson.feature(topo, topo.objects.countries);
     const tooltip = document.getElementById('mapTooltip');
     const mapWrap = document.getElementById('mapWrap');
 
     const g = svg.append('g');
+
+    // Graticule + sphere inside g so they zoom/pan with the map
+    g.append('path')
+      .datum(d3.geoGraticule().step([30,30])())
+      .attr('d', path).attr('fill','none')
+      .attr('stroke','rgba(155,106,53,0.12)').attr('stroke-width',0.6);
+    g.append('path').datum({type:'Sphere'}).attr('d',path)
+      .attr('fill','none').attr('stroke','rgba(155,106,53,0.25)').attr('stroke-width',1);
 
     // Land — warm parchment
     g.selectAll('.land')
