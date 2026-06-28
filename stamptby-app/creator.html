@@ -1,527 +1,1307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sofia Reyes — StamptBy</title>
-  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAMAEBAAAAAAIACPAQAANgAAABgYAAAAACAAbgIAAMUBAAAgIAAAAAAgAEUDAAAzBAAAiVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAABVklEQVR4nJWSTUsCURSG78eM3vGrLFqI0MeuXEhE7aVo0SJtH7W0fxJUUv0aaRMRtG0xNdkItpGCorAZG+81nHtPC2EUK9SzOgfeh3Ne3oNbnoPGKTKW+l8AAKSUowIAwBiLJyYwxkMAUEpKSQixrEq5fME5V0oBwN8AAIQNgzFmRBKi3S4WD7gQsXhyYI8WqHVNf7KrL69vgFCchTIL8zdX18K/3MlvGxFDAeB+QCkVYpHToxOP88lkcmtzA/l+anrq+Oy89lA5LJW+PJcS0jsJYyz970Ih33j/qNm257U8Lpaz2fVczjRNhBH+fRKh4btqdWVt1XXdNsYzc7O3j7Z5b+3u7ymlAg+4mzQAUEobn47rONFoLJ1ONZvNev1Z07XM0iLnPLCOg9cAAF3TqEalVJ1Oh1Kq6zpCSAhBCBncEDCBJQDojv3qnodA198PT3qUGhv4AdYApfk3OuB5AAAAAElFTkSuQmCC">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emma Chen — StamptBy</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23F5F1EA'/%3E%3Ctext x='16' y='24' font-family='Georgia%2C serif' font-size='22' font-weight='700' font-style='italic' fill='%239B6A35' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
       --brown: #9B6A35;
       --red: #8B3535;
       --cream: #DDD4B8;
       --black: #0D0A08;
-      --offwhite: #F5F1EA;
+      --off-white: #F5F1EA;
+      --mid: #6B5B45;
+      --border: #E4DECE;
     }
-    html { scroll-behavior: smooth; }
-    body { background: var(--offwhite); color: var(--black); font-family: "DM Sans", sans-serif; overflow-x: hidden; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--off-white);
+      color: var(--black);
+    }
 
     /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 48px; background: rgba(245,241,234,0.92); backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(221,212,184,0.4);
+      background: var(--off-white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-    .nav-logo { font-family: "Playfair Display", serif; font-size: 1.1rem; font-weight: 900; letter-spacing: 0.06em; color: var(--black); text-transform: lowercase; text-decoration: none; }
-    .nav-link { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--black); text-decoration: none; opacity: 0.5; transition: opacity 0.2s; }
-    .nav-link:hover { opacity: 1; }
-
-    /* ── CREATOR HERO ── */
-    .creator-hero {
-      padding: 130px 48px 72px;
-      display: flex; flex-direction: column; align-items: center; text-align: center;
-      position: relative;
-    }
-    .creator-hero::before {
-      content: "";
-      position: absolute; inset: 0;
-      background: repeating-linear-gradient(0deg, rgba(139,53,53,0.022) 0px, rgba(139,53,53,0.022) 1px, transparent 1px, transparent 20px);
-      pointer-events: none;
-    }
-    .creator-avatar-wrap { position: relative; margin-bottom: 22px; z-index: 1; }
-    .creator-avatar {
-      width: 108px; height: 108px; border-radius: 50%;
-      background: linear-gradient(135deg, #e8d8c0 0%, #c8a87a 100%);
-      border: 3px solid rgba(155,106,53,0.35);
-      display: flex; align-items: center; justify-content: center;
-      font-family: "Playfair Display", serif; font-size: 2.2rem; font-weight: 900;
+    .nav-logo {
+      font-family: 'Dancing Script', cursive;
+      font-size: 22px;
       color: var(--brown);
-      box-shadow: 0 8px 32px rgba(155,106,53,0.18);
+      text-decoration: none;
     }
-    .creator-badge {
-      position: absolute; bottom: 2px; right: 2px;
-      width: 26px; height: 26px; background: var(--red); border-radius: 50%;
-      border: 2.5px solid var(--offwhite);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.58rem; color: white; font-weight: 700;
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
-    .creator-name {
-      font-family: "Playfair Display", serif; font-size: clamp(2rem, 4.5vw, 3rem);
-      font-weight: 900; color: var(--black); margin-bottom: 6px; z-index: 1; position: relative;
+    .nav-right a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--mid);
+      text-decoration: none;
     }
-    .creator-handle-row {
-      display: flex; align-items: center; gap: 14px; margin-bottom: 18px; z-index: 1; position: relative;
+    .btn-nav {
+      background: var(--brown);
+      color: #fff !important;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
     }
-    .creator-handle {
-      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em;
-      color: var(--brown); text-decoration: none; opacity: 0.8; transition: opacity 0.2s;
+
+    /* ── PROFILE HEADER ── */
+    .profile-header {
+      background: var(--off-white);
+      padding: 48px 32px 0;
+      max-width: 980px;
+      margin: 0 auto;
     }
-    .creator-handle:hover { opacity: 1; }
-    .handle-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--cream); }
-    .creator-bio {
-      font-family: "Dancing Script", cursive; font-size: 1.3rem;
-      color: var(--black); opacity: 0.65; max-width: 400px; margin-bottom: 28px;
-      z-index: 1; position: relative;
+    .profile-top {
+      display: flex;
+      align-items: flex-end;
+      gap: 24px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
     }
-    .creator-stats {
-      display: flex; gap: 0; z-index: 1; position: relative;
-      border: 1px solid rgba(221,212,184,0.8); border-radius: 3px; overflow: hidden;
-      background: white;
+    .avatar-wrap {
+      position: relative;
+      flex-shrink: 0;
     }
-    .stat {
-      text-align: center; padding: 14px 32px;
-      border-right: 1px solid rgba(221,212,184,0.8);
+    .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--cream);
+      flex-shrink: 0;
     }
-    .stat:last-child { border-right: none; }
-    .stat-num { font-family: "Playfair Display", serif; font-size: 1.4rem; font-weight: 900; color: var(--black); }
-    .stat-label { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--black); opacity: 0.38; margin-top: 2px; }
+    .avatar svg { width: 100%; height: 100%; display: block; }
+    .verified-badge {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 22px;
+      height: 22px;
+      background: var(--brown);
+      border-radius: 50%;
+      border: 2px solid var(--off-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .verified-badge svg { width: 11px; height: 11px; }
+    .profile-info { flex: 1; }
+    .profile-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.2;
+    }
+    .profile-handle {
+      font-size: 14px;
+      color: var(--mid);
+      margin-top: 2px;
+    }
+    .profile-bio {
+      font-size: 14px;
+      color: #4a3f32;
+      margin-top: 10px;
+      max-width: 520px;
+      line-height: 1.55;
+    }
+    .profile-stats {
+      display: flex;
+      gap: 28px;
+      margin-top: 14px;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--black);
+    }
+    .stat-label {
+      font-size: 11px;
+      color: var(--mid);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-top: 1px;
+    }
+    .profile-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-end;
+      flex-shrink: 0;
+    }
+    .btn-follow {
+      background: var(--brown);
+      color: #fff;
+      border: none;
+      padding: 10px 28px;
+      border-radius: 22px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: background .2s;
+    }
+    .btn-follow:hover { background: #7a5228; }
+    .social-links {
+      display: flex;
+      gap: 10px;
+    }
+    .social-link {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--mid);
+      text-decoration: none;
+      font-size: 14px;
+      transition: border-color .2s, color .2s;
+    }
+    .social-link:hover { border-color: var(--brown); color: var(--brown); }
+
+    /* ── TABS ── */
+    .tabs-bar {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      background: var(--off-white);
+      position: sticky;
+      top: 56px;
+      z-index: 90;
+    }
+    .tab {
+      padding: 16px 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--mid);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color .2s, border-color .2s;
+      white-space: nowrap;
+    }
+    .tab.active { color: var(--brown); border-bottom-color: var(--brown); font-weight: 600; }
+    .tab:hover:not(.active) { color: var(--black); }
+
+    /* ── MAIN CONTENT ── */
+    .content {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px 32px 80px;
+    }
 
     /* ── SECTION LABEL ── */
     .section-label {
-      display: flex; align-items: center; gap: 20px;
-      padding: 0 64px; max-width: 1200px; margin: 0 auto 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
     }
-    .section-label-line { flex: 1; height: 1px; background: var(--cream); }
-    .section-label-text { font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--brown); opacity: 0.7; white-space: nowrap; }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--black);
+    }
+    .section-count {
+      font-size: 13px;
+      color: var(--mid);
+    }
 
-    /* ── TRIPS SECTION ── */
-    .trips-section { padding: 0 64px 100px; max-width: 1200px; margin: 0 auto; }
-
-    /* ── FEATURED TRIP ── */
+    /* ── FEATURED TRIP (hero card) ── */
     .featured-trip {
-      position: relative; border-radius: 6px; overflow: hidden;
-      height: 540px; margin-bottom: 28px; cursor: pointer;
-      box-shadow: 0 24px 72px rgba(13,10,8,0.18);
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--cream);
+      margin-bottom: 36px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 280px;
+      border: 1px solid var(--border);
     }
-    .featured-trip:hover .featured-overlay { opacity: 1; }
-    .featured-photo {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, #c4a882 0%, #b8956a 40%, #8a6a40 100%);
-      transition: transform 0.6s ease;
+    .featured-img {
+      background: linear-gradient(135deg, #b8956a 0%, #7a5228 50%, #4a2f10 100%);
+      position: relative;
+      overflow: hidden;
+      min-height: 260px;
     }
-    .featured-trip:hover .featured-photo { transform: scale(1.03); }
-    .featured-photo-emoji {
-      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-      font-size: 7rem; opacity: 0.18;
+    .featured-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 60%, rgba(221,212,184,0.4));
     }
-    .featured-gradient {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(13,10,8,0.88) 0%, rgba(13,10,8,0.3) 50%, rgba(13,10,8,0.05) 100%);
+    .featured-img-label {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--brown);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
     }
-    .featured-overlay {
-      position: absolute; inset: 0; background: rgba(139,53,53,0.08);
-      opacity: 0; transition: opacity 0.3s;
+    .featured-emoji {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+      opacity: .25;
     }
-    .featured-label {
-      position: absolute; top: 28px; left: 28px;
-      background: var(--red); color: white;
-      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
-      padding: 6px 14px; border-radius: 2px;
+    .featured-body {
+      padding: 28px 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    .featured-content {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 40px 44px;
-      display: flex; align-items: flex-end; justify-content: space-between; gap: 32px;
+    .featured-destination {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.25;
     }
-    .featured-text { flex: 1; }
-    .featured-location {
-      font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
-      color: rgba(221,212,184,0.7); margin-bottom: 10px;
+    .featured-subtitle {
+      font-size: 13px;
+      color: var(--mid);
+      margin-top: 6px;
     }
-    .featured-name {
-      font-family: "Playfair Display", serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      font-weight: 900; color: white; line-height: 1.15; margin-bottom: 14px;
+    .featured-desc {
+      font-size: 14px;
+      color: #4a3f32;
+      margin-top: 12px;
+      line-height: 1.6;
     }
-    .featured-meta { display: flex; gap: 24px; }
-    .featured-meta-item {
-      font-size: 0.78rem; color: rgba(255,255,255,0.55);
-      display: flex; align-items: center; gap: 6px;
+    .featured-meta {
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+      flex-wrap: wrap;
     }
-    .featured-right { text-align: right; flex-shrink: 0; }
-    .featured-price {
-      font-family: "Playfair Display", serif; font-size: 2.2rem; font-weight: 900;
-      color: white; line-height: 1;
+    .meta-chip {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      color: var(--mid);
+      background: var(--off-white);
+      padding: 5px 10px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
     }
-    .featured-price-label { font-size: 0.68rem; color: rgba(255,255,255,0.4); margin-top: 4px; margin-bottom: 18px; letter-spacing: 0.08em; }
     .featured-cta {
-      display: inline-block; padding: 13px 28px;
-      background: white; color: var(--black);
-      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
-      border-radius: 2px; text-decoration: none; transition: background 0.2s, color 0.2s;
-      white-space: nowrap;
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
     }
-    .featured-cta:hover { background: var(--cream); }
+    .btn-book {
+      background: var(--brown);
+      color: #fff;
+      border: none;
+      padding: 11px 22px;
+      border-radius: 22px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: background .2s;
+    }
+    .btn-book:hover { background: #7a5228; }
+    .btn-save {
+      background: transparent;
+      color: var(--brown);
+      border: 1.5px solid var(--brown);
+      padding: 11px 18px;
+      border-radius: 22px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: background .2s, color .2s;
+    }
+    .btn-save:hover { background: var(--brown); color: #fff; }
 
     /* ── TRIP GRID ── */
-    .trips-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    .trip-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
     }
-
     .trip-card {
-      position: relative; border-radius: 4px; overflow: hidden;
-      height: 380px; cursor: pointer; display: block; text-decoration: none;
-      box-shadow: 0 12px 40px rgba(13,10,8,0.12);
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: transform .2s, box-shadow .2s;
+      cursor: pointer;
     }
-    .trip-card:hover .trip-photo { transform: scale(1.04); }
-    .trip-card:hover .trip-hover-overlay { opacity: 1; }
-    .trip-photo {
-      position: absolute; inset: 0; transition: transform 0.55s ease;
+    .trip-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(155,106,53,.13);
     }
-    .trip-hover-overlay {
-      position: absolute; inset: 0; background: rgba(139,53,53,0.1);
-      opacity: 0; transition: opacity 0.3s;
+    .trip-card-img {
+      height: 160px;
+      position: relative;
+      overflow: hidden;
     }
-    .trip-photo-emoji {
-      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-      font-size: 5rem; opacity: 0.16;
+    .trip-card-img-bg {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 56px;
     }
-    .trip-gradient {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(13,10,8,0.9) 0%, rgba(13,10,8,0.3) 55%, rgba(13,10,8,0.0) 100%);
+    .card-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(13,10,8,.55);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 20px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      backdrop-filter: blur(4px);
     }
-    .trip-card-tag {
-      position: absolute; top: 20px; left: 20px;
-      background: var(--red); color: white;
-      font-size: 0.58rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
-      padding: 5px 12px; border-radius: 2px;
+    .card-saves {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(255,255,255,.85);
+      color: var(--mid);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 20px;
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      gap: 3px;
     }
-    .trip-card-content {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 28px 30px;
-      display: flex; align-items: flex-end; justify-content: space-between; gap: 16px;
+    .trip-card-body { padding: 16px; }
+    .trip-card-dest {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--black);
     }
-    .trip-card-text { flex: 1; }
-    .trip-card-location {
-      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(221,212,184,0.65); margin-bottom: 7px;
+    .trip-card-sub {
+      font-size: 12px;
+      color: var(--mid);
+      margin-top: 2px;
     }
-    .trip-card-name {
-      font-family: "Playfair Display", serif; font-size: 1.2rem; font-weight: 700;
-      color: white; line-height: 1.2; margin-bottom: 10px;
+    .trip-card-stops {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+      flex-wrap: wrap;
     }
-    .trip-card-meta { display: flex; gap: 16px; }
-    .trip-card-meta-item { font-size: 0.72rem; color: rgba(255,255,255,0.45); }
-    .trip-card-right { text-align: right; flex-shrink: 0; }
-    .trip-card-price {
-      font-family: "Playfair Display", serif; font-size: 1.5rem; font-weight: 900; color: white;
+    .stop-chip {
+      font-size: 11px;
+      background: var(--off-white);
+      color: var(--mid);
+      padding: 3px 8px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
     }
-    .trip-card-price-label { font-size: 0.6rem; color: rgba(255,255,255,0.38); margin-top: 3px; margin-bottom: 12px; }
-    .trip-card-cta {
-      display: inline-block; padding: 9px 18px;
-      background: rgba(255,255,255,0.12); color: white;
-      border: 1px solid rgba(255,255,255,0.25);
-      font-size: 0.62rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
-      border-radius: 2px; text-decoration: none; transition: background 0.2s, border-color 0.2s;
-      white-space: nowrap; backdrop-filter: blur(4px);
+    .trip-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
     }
-    .trip-card:hover .trip-card-cta { background: white; color: var(--black); border-color: white; }
+    .trip-price {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--brown);
+    }
+    .trip-price-sub {
+      font-size: 10px;
+      color: var(--mid);
+      font-weight: 400;
+      margin-left: 2px;
+    }
+    .btn-card-book {
+      background: var(--brown);
+      color: #fff;
+      border: none;
+      padding: 7px 14px;
+      border-radius: 18px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+    }
 
-    /* ── MODAL ── */
-    #trip-modal {
-      display: none; position: fixed; inset: 0; z-index: 200;
-      background: rgba(13,10,8,0.75); backdrop-filter: blur(6px);
-      align-items: center; justify-content: center; padding: 24px;
+    /* ── HIGHLIGHT ROW (hotel / restaurant picks) ── */
+    .picks-row {
+      margin-top: 40px;
     }
-    .modal-inner {
-      background: var(--offwhite); max-width: 580px; width: 100%; border-radius: 4px;
-      overflow: hidden; position: relative; max-height: 92vh; overflow-y: auto;
+    .picks-scroll {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scrollbar-width: none;
     }
-    .modal-photo {
-      height: 260px; position: relative; display: flex; align-items: center; justify-content: center;
-      font-size: 5rem;
+    .picks-scroll::-webkit-scrollbar { display: none; }
+    .pick-card {
+      flex-shrink: 0;
+      width: 200px;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: transform .2s;
+      cursor: pointer;
     }
-    .modal-photo-gradient {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(13,10,8,0.5) 0%, transparent 60%);
+    .pick-card:hover { transform: translateY(-2px); }
+    .pick-img {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 44px;
     }
-    .modal-photo-tag {
-      position: absolute; top: 20px; left: 20px;
-      background: var(--red); color: white;
-      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
-      padding: 5px 12px; border-radius: 2px;
+    .pick-body { padding: 12px; }
+    .pick-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--black);
     }
-    .modal-close {
-      position: absolute; top: 14px; right: 14px;
-      width: 34px; height: 34px; border-radius: 50%;
-      background: rgba(255,255,255,0.15); border: none; font-size: 1rem;
-      cursor: pointer; color: white; display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s; backdrop-filter: blur(4px); z-index: 10;
+    .pick-loc {
+      font-size: 11px;
+      color: var(--mid);
+      margin-top: 2px;
     }
-    .modal-close:hover { background: rgba(255,255,255,0.3); }
-    .modal-body { padding: 32px 36px 40px; }
-    .modal-location {
-      font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--brown); margin-bottom: 8px;
+    .pick-price {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--brown);
+      margin-top: 8px;
     }
-    .modal-name { font-family: "Playfair Display", serif; font-size: 1.7rem; font-weight: 700; margin-bottom: 16px; line-height: 1.2; }
-    .modal-desc { font-size: 0.9rem; line-height: 1.75; opacity: 0.62; margin-bottom: 28px; }
-    .modal-stats { display: flex; gap: 0; margin-bottom: 28px; border: 1px solid var(--cream); border-radius: 3px; overflow: hidden; }
-    .modal-stat { flex: 1; padding: 14px 20px; border-right: 1px solid var(--cream); text-align: center; }
-    .modal-stat:last-child { border-right: none; }
-    .modal-stat-num { font-family: "Playfair Display", serif; font-size: 1.4rem; font-weight: 900; }
-    .modal-stat-label { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.38; margin-top: 2px; }
-    .modal-cta {
-      display: block; text-align: center; padding: 15px;
-      background: var(--red); color: white;
-      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
-      border-radius: 2px; text-decoration: none; transition: background 0.2s;
+    .pick-btn {
+      display: block;
+      width: 100%;
+      margin-top: 8px;
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      color: var(--brown);
+      border-radius: 18px;
+      padding: 6px 0;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      text-align: center;
+      transition: background .2s, color .2s;
     }
-    .modal-cta:hover { background: var(--brown); }
-    .modal-fine { text-align: center; font-size: 0.67rem; opacity: 0.32; margin-top: 10px; }
+    .pick-btn:hover { background: var(--brown); color: #fff; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--black); color: var(--offwhite);
-      padding: 40px 48px;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 16px;
+    /* ── FOOTER BANNER ── */
+    .creator-banner {
+      margin-top: 56px;
+      background: linear-gradient(135deg, var(--brown), #7a5228);
+      border-radius: 16px;
+      padding: 36px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
     }
-    .footer-brand { font-family: "Playfair Display", serif; font-size: 1rem; font-weight: 900; letter-spacing: 0.06em; }
-    .footer-email { font-size: 0.78rem; opacity: 0.4; color: var(--offwhite); text-decoration: none; transition: opacity 0.2s; }
-    .footer-email:hover { opacity: 0.75; }
-    .footer-copy { font-size: 0.72rem; opacity: 0.3; }
+    .banner-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: #fff;
+      font-weight: 600;
+    }
+    .banner-text p {
+      font-size: 14px;
+      color: rgba(255,255,255,.75);
+      margin-top: 6px;
+    }
+    .btn-banner {
+      background: #fff;
+      color: var(--brown);
+      border: none;
+      padding: 12px 28px;
+      border-radius: 22px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
 
-    @media (max-width: 800px) {
-      nav { padding: 18px 24px; }
-      .trips-section { padding: 0 24px 80px; }
-      .section-label { padding: 0 24px; }
-      .featured-trip { height: 420px; }
-      .featured-content { flex-direction: column; align-items: flex-start; padding: 28px; }
-      .featured-right { text-align: left; }
-      .trips-grid { grid-template-columns: 1fr; }
-      .trip-card { height: 320px; }
-      footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+    /* ── SORT BAR ── */
+    .sort-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .sort-label {
+      font-size: 12px;
+      color: var(--mid);
+      font-weight: 500;
+      margin-right: 2px;
+    }
+    .sort-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 13px;
+      border-radius: 20px;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      color: var(--mid);
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: border-color .2s, color .2s, background .2s;
+      white-space: nowrap;
+    }
+    .sort-btn:hover { border-color: var(--brown); color: var(--brown); }
+    .sort-btn.active {
+      background: var(--brown);
+      border-color: var(--brown);
+      color: #fff;
+    }
+    .sort-arrow { font-size: 10px; opacity: .8; }
+
+    /* ── TRAVEL MAP ── */
+    .map-section { margin-top: 40px; }
+    .map-wrap {
+      background: #1a2a3a;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .map-wrap svg { display: block; width: 100%; height: auto; }
+    .map-stat-bar {
+      display: flex;
+      gap: 24px;
+      padding: 14px 20px;
+      background: #132030;
+      border-top: 1px solid rgba(255,255,255,.08);
+      flex-wrap: wrap;
+    }
+    .map-stat { text-align: center; flex: 1; min-width: 70px; }
+    .map-stat-num {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--cream);
+      font-family: 'Playfair Display', serif;
+    }
+    .map-stat-label {
+      font-size: 10px;
+      color: rgba(221,212,184,.55);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-top: 2px;
+    }
+    /* tooltip */
+    .map-tooltip {
+      position: absolute;
+      background: rgba(13,10,8,.92);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-family: 'DM Sans', sans-serif;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .15s;
+      white-space: nowrap;
+      z-index: 10;
+      border: 1px solid rgba(155,106,53,.4);
+    }
+    .map-tooltip strong { color: var(--cream); display: block; font-size: 13px; }
+    .map-tooltip span { color: rgba(255,255,255,.65); }
+
+    @media (max-width: 720px) {
+      .featured-trip { grid-template-columns: 1fr; }
+      .trip-grid { grid-template-columns: 1fr 1fr; }
+      .profile-top { flex-wrap: wrap; }
+      .profile-actions { align-items: flex-start; }
+      .creator-banner { flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .trip-grid { grid-template-columns: 1fr; }
+      .content { padding: 24px 16px 60px; }
+      .profile-header { padding: 28px 16px 0; }
+      .tabs-bar { padding: 0 16px; }
     }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">stamptby</a>
-  <a href="index.html#waitlist-form" class="nav-link">Join Waitlist</a>
-</nav>
-
-<!-- CREATOR HERO -->
-<section class="creator-hero">
-  <div class="creator-avatar-wrap">
-    <div class="creator-avatar">SR</div>
-    <div class="creator-badge">✓</div>
-  </div>
-  <h1 class="creator-name">Sofia Reyes</h1>
-  <div class="creator-handle-row">
-    <a href="https://instagram.com/sofiatravels" class="creator-handle" target="_blank" rel="noopener">Instagram &nbsp;@sofiatravels</a>
-    <div class="handle-dot"></div>
-    <a href="https://tiktok.com/@sofiatravels" class="creator-handle" target="_blank" rel="noopener">TikTok &nbsp;@sofiatravels</a>
-  </div>
-  <p class="creator-bio">"I find the trips nobody else is talking about."</p>
-  <div class="creator-stats">
-    <div class="stat"><div class="stat-num">84K</div><div class="stat-label">Followers</div></div>
-    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Curated Trips</div></div>
-    <div class="stat"><div class="stat-num">Est. '26</div><div class="stat-label">On StamptBy</div></div>
-  </div>
-</section>
-
-<!-- SECTION LABEL -->
-<div class="section-label" style="max-width:1200px; padding:0 64px; margin: 0 auto 48px;">
-  <div class="section-label-line"></div>
-  <span class="section-label-text">Sofia's Storefront</span>
-  <div class="section-label-line"></div>
-</div>
-
-<!-- TRIPS -->
-<div class="trips-section">
-
-  <!-- FEATURED: Amalfi Coast -->
-  <div class="featured-trip" onclick="openTrip('amalfi')">
-    <div class="featured-photo" style="background: linear-gradient(135deg, #b8956a 0%, #d4b896 35%, #9a7248 70%, #6b4e2a 100%);">
-      <div class="featured-photo-emoji">🌊</div>
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">stamptby</a>
+    <div class="nav-right">
+      <a href="#">Explore</a>
+      <a href="#">Sign in</a>
+      <a href="https://tally.so/r/44Ee8k" class="btn-nav">Become a Creator</a>
     </div>
-    <div class="featured-gradient"></div>
-    <div class="featured-overlay"></div>
-    <div class="featured-label">Sofia's Pick &nbsp;·&nbsp; Featured</div>
-    <div class="featured-content">
-      <div class="featured-text">
-        <div class="featured-location">Italy &nbsp;·&nbsp; Campania</div>
-        <div class="featured-name">The Amalfi Coast<br><em style="font-style:italic; color:rgba(221,212,184,0.85);">No One Talks About</em></div>
-        <div class="featured-meta">
-          <div class="featured-meta-item">📅&nbsp; 7 days</div>
-          <div class="featured-meta-item">·</div>
-          <div class="featured-meta-item">Solo or couple</div>
-          <div class="featured-meta-item">·</div>
-          <div class="featured-meta-item">Hotels, tours & transfers included</div>
+  </nav>
+
+  <!-- PROFILE HEADER -->
+  <div class="profile-header">
+    <div class="profile-top">
+      <div class="avatar-wrap">
+        <div class="avatar">
+          <svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background gradient -->
+            <defs>
+              <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#c8a97a"/>
+                <stop offset="100%" stop-color="#7a4f20"/>
+              </linearGradient>
+              <linearGradient id="skinGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#f5c9a0"/>
+                <stop offset="100%" stop-color="#e0a870"/>
+              </linearGradient>
+              <clipPath id="circleClip">
+                <circle cx="48" cy="48" r="48"/>
+              </clipPath>
+            </defs>
+            <circle cx="48" cy="48" r="48" fill="url(#bgGrad)"/>
+            <!-- Body / shoulders -->
+            <ellipse cx="48" cy="88" rx="28" ry="18" fill="#3a2010"/>
+            <!-- Neck -->
+            <rect x="43" y="62" width="10" height="12" rx="4" fill="url(#skinGrad)"/>
+            <!-- Head -->
+            <ellipse cx="48" cy="52" rx="18" ry="20" fill="url(#skinGrad)"/>
+            <!-- Hair — dark, long, slight wave -->
+            <ellipse cx="48" cy="40" rx="19" ry="14" fill="#1a0d00"/>
+            <path d="M29 46 Q26 60 28 72" stroke="#1a0d00" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <path d="M67 46 Q70 60 68 72" stroke="#1a0d00" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <!-- Hair top detail -->
+            <ellipse cx="48" cy="36" rx="18" ry="10" fill="#1a0d00"/>
+            <!-- Eyes -->
+            <ellipse cx="41" cy="52" rx="3.5" ry="3" fill="#fff"/>
+            <ellipse cx="55" cy="52" rx="3.5" ry="3" fill="#fff"/>
+            <circle cx="41" cy="52" r="2" fill="#2a1505"/>
+            <circle cx="55" cy="52" r="2" fill="#2a1505"/>
+            <circle cx="41.8" cy="51.2" r="0.7" fill="#fff"/>
+            <circle cx="55.8" cy="51.2" r="0.7" fill="#fff"/>
+            <!-- Eyebrows -->
+            <path d="M37 48 Q41 46.5 45 48" stroke="#1a0d00" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <path d="M51 48 Q55 46.5 59 48" stroke="#1a0d00" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <!-- Nose -->
+            <path d="M47 54 Q46 58 48 59 Q50 58 49 54" stroke="#c8845a" stroke-width="1" fill="none" stroke-linecap="round"/>
+            <!-- Smile -->
+            <path d="M43 63 Q48 67 53 63" stroke="#c8845a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <!-- Subtle blush -->
+            <ellipse cx="37" cy="58" rx="5" ry="3" fill="rgba(220,120,100,0.18)"/>
+            <ellipse cx="59" cy="58" rx="5" ry="3" fill="rgba(220,120,100,0.18)"/>
+            <!-- Small earrings -->
+            <circle cx="30" cy="56" r="2" fill="#c4a24a"/>
+            <circle cx="66" cy="56" r="2" fill="#c4a24a"/>
+          </svg>
+        </div>
+        <div class="verified-badge">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
       </div>
-      <div class="featured-right">
-        <div class="featured-price">$2,400+</div>
-        <div class="featured-price-label">per person</div>
-        <a class="featured-cta" href="#" onclick="openTrip('amalfi'); return false;">Book This Trip</a>
+
+      <div class="profile-info">
+        <div class="profile-name">Emma Chen</div>
+        <div class="profile-handle">@emmawanders · Founding Creator</div>
+        <div class="profile-bio">Southeast Asia, Japan &amp; hidden European gems 🌏 — I share the exact hotels, restaurants, and itineraries I actually use. No fluff, just trips you can actually book.</div>
+        <div class="profile-stats">
+          <div class="stat"><div class="stat-num">24</div><div class="stat-label">Trips</div></div>
+          <div class="stat"><div class="stat-num">142K</div><div class="stat-label">Followers</div></div>
+          <div class="stat"><div class="stat-num">4.8K</div><div class="stat-label">Saves</div></div>
+        </div>
+      </div>
+
+      <div class="profile-actions">
+        <button class="btn-follow">Follow</button>
+        <div class="social-links">
+          <a href="#" class="social-link" title="Instagram">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+          <a href="#" class="social-link" title="TikTok">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.36 6.36 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.02a8.18 8.18 0 004.78 1.54V7.12a4.85 4.85 0 01-1.01-.43z"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- GRID: Oaxaca + Santorini -->
-  <div class="trips-grid">
+  <!-- TABS -->
+  <div class="tabs-bar">
+    <div class="tab active">All Trips</div>
+    <div class="tab">Southeast Asia</div>
+    <div class="tab">Japan</div>
+    <div class="tab">Europe</div>
+    <div class="tab">Top Stays</div>
+  </div>
 
-    <div class="trip-card" onclick="openTrip('oaxaca')">
-      <div class="trip-photo" style="background: linear-gradient(135deg, #c4845a 0%, #e8c49a 45%, #8a4a28 100%);">
-        <div class="trip-photo-emoji">🌮</div>
+  <!-- MAIN CONTENT -->
+  <div class="content">
+
+    <!-- FEATURED TRIP -->
+    <div class="section-label">
+      <div class="section-title">Featured Trip</div>
+    </div>
+
+    <div class="featured-trip">
+      <div class="featured-img">
+        <div class="featured-emoji">🇯🇵</div>
+        <div class="featured-img-overlay"></div>
+        <div class="featured-img-label">⭐ Most Saved</div>
       </div>
-      <div class="trip-gradient"></div>
-      <div class="trip-hover-overlay"></div>
-      <div class="trip-card-tag">Best Value</div>
-      <div class="trip-card-content">
-        <div class="trip-card-text">
-          <div class="trip-card-location">Mexico &nbsp;·&nbsp; Oaxaca</div>
-          <div class="trip-card-name">Hidden Oaxaca: Art, Food & Mountains</div>
-          <div class="trip-card-meta">
-            <div class="trip-card-meta-item">📅 5 days</div>
-            <div class="trip-card-meta-item">·</div>
-            <div class="trip-card-meta-item">Any group</div>
+      <div class="featured-body">
+        <div>
+          <div class="featured-destination">10 Days in Japan</div>
+          <div class="featured-subtitle">Tokyo · Kyoto · Osaka · Nara</div>
+          <div class="featured-desc">The exact route I took last spring — including the ryokan in Kyoto nobody talks about, the best ramen shop in Osaka's backstreets, and how to do Nara in half a day without the tourist crowds.</div>
+          <div class="featured-meta">
+            <div class="meta-chip">📅 10 days</div>
+            <div class="meta-chip">🏨 4 hotels</div>
+            <div class="meta-chip">🍜 12 restaurants</div>
+            <div class="meta-chip">✈️ Best in March–May</div>
           </div>
         </div>
-        <div class="trip-card-right">
-          <div class="trip-card-price">$1,200+</div>
-          <div class="trip-card-price-label">per person</div>
-          <a class="trip-card-cta" href="#" onclick="openTrip('oaxaca'); return false;">Book Trip</a>
+        <div class="featured-cta">
+          <button class="btn-book">Book This Trip</button>
+          <button class="btn-save">♡ Save</button>
         </div>
       </div>
     </div>
 
-    <div class="trip-card" onclick="openTrip('santorini')">
-      <div class="trip-photo" style="background: linear-gradient(135deg, #4a7ea8 0%, #a8c8e8 45%, #2a5878 100%);">
-        <div class="trip-photo-emoji">🏛️</div>
+    <!-- TRIP GRID -->
+    <div class="section-label">
+      <div class="section-title">All Trips <span class="section-count" style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:400;">· 24 trips</span></div>
+      <div class="sort-bar">
+        <span class="sort-label">Sort:</span>
+        <button class="sort-btn" data-sort="price-asc">💰 Price <span class="sort-arrow">↑</span></button>
+        <button class="sort-btn" data-sort="price-desc">💰 Price <span class="sort-arrow">↓</span></button>
+        <button class="sort-btn" data-sort="likes-asc">♡ Likes <span class="sort-arrow">↑</span></button>
+        <button class="sort-btn" data-sort="likes-desc">♡ Likes <span class="sort-arrow">↓</span></button>
       </div>
-      <div class="trip-gradient"></div>
-      <div class="trip-hover-overlay"></div>
-      <div class="trip-card-tag">Most Popular</div>
-      <div class="trip-card-content">
-        <div class="trip-card-text">
-          <div class="trip-card-location">Greece &nbsp;·&nbsp; Cyclades</div>
-          <div class="trip-card-name">Santorini Beyond the Blue Domes</div>
-          <div class="trip-card-meta">
-            <div class="trip-card-meta-item">📅 6 days</div>
-            <div class="trip-card-meta-item">·</div>
-            <div class="trip-card-meta-item">Couples</div>
+    </div>
+
+    <div class="trip-grid">
+
+      <div class="trip-card" data-price="890" data-likes="312">
+        <div class="trip-card-img">
+          <div class="trip-card-img-bg" style="background: linear-gradient(135deg,#e8d5a3,#c4a87a);">🇹🇭</div>
+          <div class="card-tag">7 days</div>
+          <div class="card-saves">♡ 312</div>
+        </div>
+        <div class="trip-card-body">
+          <div class="trip-card-dest">Thailand: Beyond Bangkok</div>
+          <div class="trip-card-sub">Chiang Mai · Pai · Koh Lanta</div>
+          <div class="trip-card-stops">
+            <span class="stop-chip">🏨 3 hotels</span>
+            <span class="stop-chip">🍽️ 8 spots</span>
+            <span class="stop-chip">🛵 2 day trips</span>
+          </div>
+          <div class="trip-card-footer">
+            <div class="trip-price">from $890<span class="trip-price-sub">/person</span></div>
+            <button class="btn-card-book">Book</button>
           </div>
         </div>
-        <div class="trip-card-right">
-          <div class="trip-card-price">$2,800+</div>
-          <div class="trip-card-price-label">per person</div>
-          <a class="trip-card-cta" href="#" onclick="openTrip('santorini'); return false;">Book Trip</a>
+      </div>
+
+      <div class="trip-card" data-price="620" data-likes="218">
+        <div class="trip-card-img">
+          <div class="trip-card-img-bg" style="background: linear-gradient(135deg,#c9d4e8,#8a9fc4);">🇵🇹</div>
+          <div class="card-tag">5 days</div>
+          <div class="card-saves">♡ 218</div>
+        </div>
+        <div class="trip-card-body">
+          <div class="trip-card-dest">Lisbon &amp; Sintra</div>
+          <div class="trip-card-sub">Portugal · Long Weekend</div>
+          <div class="trip-card-stops">
+            <span class="stop-chip">🏨 1 hotel</span>
+            <span class="stop-chip">🍽️ 11 spots</span>
+            <span class="stop-chip">🚂 Day trip</span>
+          </div>
+          <div class="trip-card-footer">
+            <div class="trip-price">from $620<span class="trip-price-sub">/person</span></div>
+            <button class="btn-card-book">Book</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="trip-card" data-price="1140" data-likes="497">
+        <div class="trip-card-img">
+          <div class="trip-card-img-bg" style="background: linear-gradient(135deg,#d4e8c9,#7fc48a);">🇮🇩</div>
+          <div class="card-tag">9 days</div>
+          <div class="card-saves">♡ 497</div>
+        </div>
+        <div class="trip-card-body">
+          <div class="trip-card-dest">Bali Done Right</div>
+          <div class="trip-card-sub">Ubud · Seminyak · Nusa Penida</div>
+          <div class="trip-card-stops">
+            <span class="stop-chip">🏨 3 villas</span>
+            <span class="stop-chip">🍽️ 9 spots</span>
+            <span class="stop-chip">🤿 2 day trips</span>
+          </div>
+          <div class="trip-card-footer">
+            <div class="trip-price">from $1,140<span class="trip-price-sub">/person</span></div>
+            <button class="btn-card-book">Book</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="trip-card" data-price="1320" data-likes="384">
+        <div class="trip-card-img">
+          <div class="trip-card-img-bg" style="background: linear-gradient(135deg,#e8c9d4,#c47f8a);">🇻🇳</div>
+          <div class="card-tag">12 days</div>
+          <div class="card-saves">♡ 384</div>
+        </div>
+        <div class="trip-card-body">
+          <div class="trip-card-dest">Vietnam North to South</div>
+          <div class="trip-card-sub">Hanoi · Ha Long · Hoi An · Saigon</div>
+          <div class="trip-card-stops">
+            <span class="stop-chip">🏨 5 hotels</span>
+            <span class="stop-chip">🍽️ 14 spots</span>
+            <span class="stop-chip">⛵ Cruise</span>
+          </div>
+          <div class="trip-card-footer">
+            <div class="trip-price">from $1,320<span class="trip-price-sub">/person</span></div>
+            <button class="btn-card-book">Book</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="trip-card" data-price="1850" data-likes="561">
+        <div class="trip-card-img">
+          <div class="trip-card-img-bg" style="background: linear-gradient(135deg,#e8e4c9,#c4b87a);">🇬🇷</div>
+          <div class="card-tag">8 days</div>
+          <div class="card-saves">♡ 561</div>
+        </div>
+        <div class="trip-card-body">
+          <div class="trip-card-dest">Greek Islands</div>
+          <div class="trip-card-sub">Athens · Santorini · Milos</div>
+          <div class="trip-card-stops">
+            <span class="stop-chip">🏨 3 hotels</span>
+            <span class="stop-chip">🍽️ 10 spots</span>
+            <span class="stop-chip">⛴️ Ferry route</span>
+          </div>
+          <div class="trip-card-footer">
+            <div class="trip-price">from $1,850<span class="trip-price-sub">/person</span></div>
+            <button class="btn-card-book">Book</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="trip-card" data-price="780" data-likes="203">
+        <div class="trip-card-img">
+          <div class="trip-card-img-bg" style="background: linear-gradient(135deg,#c9d8e8,#7a9ec4);">🇰🇷</div>
+          <div class="card-tag">6 days</div>
+          <div class="card-saves">♡ 203</div>
+        </div>
+        <div class="trip-card-body">
+          <div class="trip-card-dest">Seoul &amp; Busan</div>
+          <div class="trip-card-sub">South Korea · Food Focus</div>
+          <div class="trip-card-stops">
+            <span class="stop-chip">🏨 2 hotels</span>
+            <span class="stop-chip">🍽️ 16 spots</span>
+            <span class="stop-chip">🚄 KTX train</span>
+          </div>
+          <div class="trip-card-footer">
+            <div class="trip-price">from $780<span class="trip-price-sub">/person</span></div>
+            <button class="btn-card-book">Book</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TOP STAYS PICKS -->
+    <div class="picks-row">
+      <div class="section-label">
+        <div class="section-title">Emma's Top Stays</div>
+        <div class="section-count">16 picks</div>
+      </div>
+      <div class="picks-scroll">
+
+        <div class="pick-card">
+          <div class="pick-img" style="background:linear-gradient(135deg,#e8d5a3,#b8956a);">🏯</div>
+          <div class="pick-body">
+            <div class="pick-name">Ryokan Sawaya</div>
+            <div class="pick-loc">Kyoto, Japan</div>
+            <div class="pick-price">from $280/night</div>
+            <button class="pick-btn">Book via Booking.com</button>
+          </div>
+        </div>
+
+        <div class="pick-card">
+          <div class="pick-img" style="background:linear-gradient(135deg,#c9d4e8,#7a8fc4);">🏛️</div>
+          <div class="pick-body">
+            <div class="pick-name">Casa de São Mamede</div>
+            <div class="pick-loc">Lisbon, Portugal</div>
+            <div class="pick-price">from $140/night</div>
+            <button class="pick-btn">Book via Booking.com</button>
+          </div>
+        </div>
+
+        <div class="pick-card">
+          <div class="pick-img" style="background:linear-gradient(135deg,#d4e8c9,#7fc48a);">🌿</div>
+          <div class="pick-body">
+            <div class="pick-name">Komaneka at Bisma</div>
+            <div class="pick-loc">Ubud, Bali</div>
+            <div class="pick-price">from $320/night</div>
+            <button class="pick-btn">Book via Booking.com</button>
+          </div>
+        </div>
+
+        <div class="pick-card">
+          <div class="pick-img" style="background:linear-gradient(135deg,#e8e4c9,#c4b87a);">🌊</div>
+          <div class="pick-body">
+            <div class="pick-name">Mystique Hotel</div>
+            <div class="pick-loc">Santorini, Greece</div>
+            <div class="pick-price">from $510/night</div>
+            <button class="pick-btn">Book via Booking.com</button>
+          </div>
+        </div>
+
+        <div class="pick-card">
+          <div class="pick-img" style="background:linear-gradient(135deg,#e8c9d4,#c47f8a);">🏮</div>
+          <div class="pick-body">
+            <div class="pick-name">Anantara Hoi An</div>
+            <div class="pick-loc">Hoi An, Vietnam</div>
+            <div class="pick-price">from $195/night</div>
+            <button class="pick-btn">Book via Booking.com</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TRAVEL MAP -->
+    <div class="map-section">
+      <div class="section-label">
+        <div class="section-title">Emma's World Map</div>
+        <div class="section-count">18 countries · 24 trips</div>
+      </div>
+      <div class="map-wrap" id="mapWrap">
+        <div class="map-tooltip" id="mapTooltip"></div>
+        <!-- SVG world map injected by JS -->
+        <div id="mapSvgContainer"></div>
+        <div class="map-stat-bar">
+          <div class="map-stat"><div class="map-stat-num">18</div><div class="map-stat-label">Countries</div></div>
+          <div class="map-stat"><div class="map-stat-num">4</div><div class="map-stat-label">Continents</div></div>
+          <div class="map-stat"><div class="map-stat-num">24</div><div class="map-stat-label">Trips</div></div>
+          <div class="map-stat"><div class="map-stat-num">47K</div><div class="map-stat-label">Miles</div></div>
         </div>
       </div>
     </div>
 
-  </div>
-</div>
-
-<!-- TRIP DETAIL MODAL -->
-<div id="trip-modal" style="display:none; position:fixed; inset:0; z-index:200; background:rgba(13,10,8,0.75); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:24px;">
-  <div class="modal-inner">
-    <div class="modal-photo" id="modal-photo">
-      <div class="modal-photo-gradient"></div>
-      <div class="modal-photo-tag" id="modal-tag"></div>
-      <button class="modal-close" onclick="closeTrip()">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="modal-location" id="modal-location"></div>
-      <div class="modal-name" id="modal-name"></div>
-      <p class="modal-desc" id="modal-desc"></p>
-      <div class="modal-stats">
-        <div class="modal-stat"><div class="modal-stat-num" id="modal-price"></div><div class="modal-stat-label">Per Person</div></div>
-        <div class="modal-stat"><div class="modal-stat-num" id="modal-duration"></div><div class="modal-stat-label">Days</div></div>
-        <div class="modal-stat"><div class="modal-stat-num" id="modal-group"></div><div class="modal-stat-label">Group Type</div></div>
+    <!-- CREATOR CTA BANNER -->
+    <div class="creator-banner">
+      <div class="banner-text">
+        <h3>Travel like Emma — book the exact trip.</h3>
+        <p>Every hotel, restaurant, and itinerary is shoppable. No guesswork, no DMs asking "where did you stay?"</p>
       </div>
-      <a class="modal-cta" id="modal-cta" href="#">Book This Trip via Affiliate Link</a>
-      <p class="modal-fine">Redirects to booking partner. Sofia earns a commission at no cost to you.</p>
+      <button class="btn-banner">Join the Waitlist</button>
     </div>
-  </div>
-</div>
 
-<footer>
-  <span class="footer-brand">stamptby</span>
-  <a href="mailto:hello@stamptby.com" class="footer-email">hello@stamptby.com</a>
-  <span class="footer-copy">&copy; 2026 StamptBy. All rights reserved.</span>
-</footer>
+  </div><!-- end .content -->
 
-<script>
-  var trips = {
-    amalfi: {
-      bg: 'linear-gradient(135deg, #b8956a 0%, #d4b896 35%, #9a7248 70%, #6b4e2a 100%)',
-      emoji: '🌊',
-      tag: "Sofia's Pick · Featured",
-      location: 'Italy · Campania',
-      name: 'The Amalfi Coast No One Talks About',
-      desc: "Skip the tourist traps. Sofia's itinerary takes you through Ravello's hilltop gardens, a local fishing village, and a 3-hour boat tour to sea caves you won't find on any list. Every stay, meal, and transfer is pre-arranged.",
-      price: '$2,400+', duration: '7', group: 'Solo / Couple', link: '#'
-    },
-    oaxaca: {
-      bg: 'linear-gradient(135deg, #c4845a 0%, #e8c49a 45%, #8a4a28 100%)',
-      emoji: '🌮',
-      tag: 'Best Value',
-      location: 'Mexico · Oaxaca',
-      name: 'Hidden Oaxaca: Art, Food & Mountains',
-      desc: "Mezcal tastings at family distilleries, a private weaving workshop in Teotitlán, and the best tlayuda of your life at a spot with no English menu. Sofia's 5-day Oaxaca is built for curious travelers on a smart budget.",
-      price: '$1,200+', duration: '5', group: 'Any Group', link: '#'
-    },
-    santorini: {
-      bg: 'linear-gradient(135deg, #4a7ea8 0%, #a8c8e8 45%, #2a5878 100%)',
-      emoji: '🏛️',
-      tag: 'Most Popular',
-      location: 'Greece · Cyclades',
-      name: 'Santorini Beyond the Blue Domes',
-      desc: "Yes, the views. But also: a sunset wine tour through Pyrgos, a morning hike from Fira to Oia before the crowds, and a caldera dinner that actually fits a real budget. Sofia's 6-day route skips the clichés without missing the magic.",
-      price: '$2,800+', duration: '6', group: 'Couples', link: '#'
+  <script>
+    // ── WORLD MAP ──
+    const visited = {
+      392: { name: 'Japan',        iso: 'JP', trips: 3, emoji: '🇯🇵', highlight: '10 Days in Japan',         cx: 760, cy: 178 },
+      764: { name: 'Thailand',     iso: 'TH', trips: 2, emoji: '🇹🇭', highlight: 'Beyond Bangkok',           cx: 686, cy: 228 },
+      620: { name: 'Portugal',     iso: 'PT', trips: 1, emoji: '🇵🇹', highlight: 'Lisbon & Sintra',          cx: 430, cy: 176 },
+      360: { name: 'Indonesia',    iso: 'ID', trips: 2, emoji: '🇮🇩', highlight: 'Bali Done Right',          cx: 730, cy: 274 },
+      704: { name: 'Vietnam',      iso: 'VN', trips: 2, emoji: '🇻🇳', highlight: 'North to South',           cx: 706, cy: 218 },
+      300: { name: 'Greece',       iso: 'GR', trips: 1, emoji: '🇬🇷', highlight: 'Greek Islands',            cx: 534, cy: 178 },
+      410: { name: 'South Korea',  iso: 'KR', trips: 1, emoji: '🇰🇷', highlight: 'Seoul & Busan',            cx: 748, cy: 174 },
+      380: { name: 'Italy',        iso: 'IT', trips: 2, emoji: '🇮🇹', highlight: 'Amalfi & Rome',            cx: 508, cy: 170 },
+      250: { name: 'France',       iso: 'FR', trips: 1, emoji: '🇫🇷', highlight: 'Paris & Provence',         cx: 472, cy: 158 },
+      724: { name: 'Spain',        iso: 'ES', trips: 1, emoji: '🇪🇸', highlight: 'Barcelona',                cx: 452, cy: 172 },
+      484: { name: 'Mexico',       iso: 'MX', trips: 1, emoji: '🇲🇽', highlight: 'Oaxaca & CDMX',           cx: 168, cy: 232 },
+      170: { name: 'Colombia',     iso: 'CO', trips: 1, emoji: '🇨🇴', highlight: 'Cartagena',               cx: 218, cy: 274 },
+      504: { name: 'Morocco',      iso: 'MA', trips: 1, emoji: '🇲🇦', highlight: 'Marrakech',               cx: 450, cy: 196 },
+      702: { name: 'Singapore',    iso: 'SG', trips: 1, emoji: '🇸🇬', highlight: 'Food Trip',               cx: 700, cy: 260 },
+      458: { name: 'Malaysia',     iso: 'MY', trips: 1, emoji: '🇲🇾', highlight: 'Penang & KL',             cx: 696, cy: 252 },
+      524: { name: 'Nepal',        iso: 'NP', trips: 1, emoji: '🇳🇵', highlight: 'Kathmandu & Trek',        cx: 644, cy: 196 },
+      792: { name: 'Turkey',       iso: 'TR', trips: 1, emoji: '🇹🇷', highlight: 'Istanbul & Cappadocia',   cx: 558, cy: 170 },
+      191: { name: 'Croatia',      iso: 'HR', trips: 1, emoji: '🇭🇷', highlight: 'Dalmatian Coast',         cx: 514, cy: 158 },
+    };
+
+    async function buildMap() {
+      const container = document.getElementById('mapSvgContainer');
+      const W = 960, H = 500;
+
+      // Loading state
+      container.innerHTML = `<div style="height:${H}px;display:flex;align-items:center;justify-content:center;color:rgba(221,212,184,0.4);font-family:'DM Sans',sans-serif;font-size:14px;">Loading map…</div>`;
+
+      // Fetch real world TopoJSON (Natural Earth 110m)
+      let topo;
+      try {
+        const res = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
+        topo = await res.json();
+      } catch(e) {
+        container.innerHTML = `<div style="height:200px;display:flex;align-items:center;justify-content:center;color:rgba(221,212,184,0.4);font-size:13px;">Map unavailable offline</div>`;
+        return;
+      }
+
+      // Load D3 + TopoJSON
+      await Promise.all([
+        new Promise(r => { const s = document.createElement('script'); s.src='https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js'; s.onload=r; document.head.appendChild(s); }),
+        new Promise(r => { const s = document.createElement('script'); s.src='https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js'; s.onload=r; document.head.appendChild(s); }),
+      ]);
+
+      container.innerHTML = '';
+
+      const projection = d3.geoNaturalEarth1()
+        .scale(153)
+        .translate([W / 2, H / 2]);
+      const path = d3.geoPath().projection(projection);
+
+      const svg = d3.select(container).append('svg')
+        .attr('viewBox', `0 0 ${W} ${H}`)
+        .style('display', 'block').style('width', '100%').style('height', 'auto');
+
+      // Defs: gradients + glow filter
+      const defs = svg.append('defs');
+      defs.append('radialGradient').attr('id','oceanGrad')
+        .call(g => {
+          g.append('stop').attr('offset','0%').attr('stop-color','#1e3448');
+          g.append('stop').attr('offset','100%').attr('stop-color','#0d1b2a');
+        });
+      defs.append('filter').attr('id','glow')
+        .call(f => {
+          f.append('feGaussianBlur').attr('stdDeviation','3').attr('result','blur');
+          f.append('feMerge').call(m => {
+            m.append('feMergeNode').attr('in','blur');
+            m.append('feMergeNode').attr('in','SourceGraphic');
+          });
+        });
+      defs.append('filter').attr('id','pinGlow')
+        .call(f => {
+          f.append('feGaussianBlur').attr('stdDeviation','2.5').attr('result','blur');
+          f.append('feMerge').call(m => {
+            m.append('feMergeNode').attr('in','blur');
+            m.append('feMergeNode').attr('in','SourceGraphic');
+          });
+        });
+
+      // Ocean
+      svg.append('rect').attr('width', W).attr('height', H).attr('fill', 'url(#oceanGrad)');
+
+      // Graticule (subtle grid)
+      const graticule = d3.geoGraticule().step([30, 30]);
+      svg.append('path')
+        .datum(graticule())
+        .attr('d', path)
+        .attr('fill', 'none')
+        .attr('stroke', 'rgba(255,255,255,0.04)')
+        .attr('stroke-width', 0.5);
+
+      // Sphere outline
+      svg.append('path')
+        .datum({type:'Sphere'})
+        .attr('d', path)
+        .attr('fill', 'none')
+        .attr('stroke', 'rgba(255,255,255,0.08)')
+        .attr('stroke-width', 1);
+
+      // Countries
+      const countries = topojson.feature(topo, topo.objects.countries);
+      const tooltip = document.getElementById('mapTooltip');
+      const mapWrap = document.getElementById('mapWrap');
+
+      svg.selectAll('.country')
+        .data(countries.features)
+        .join('path')
+        .attr('class', d => visited[+d.id] ? 'country visited-country' : 'country')
+        .attr('d', path)
+        .attr('fill', d => visited[+d.id] ? 'rgba(155,106,53,0.78)' : 'rgba(255,255,255,0.07)')
+        .attr('stroke', d => visited[+d.id] ? '#c4864a' : 'rgba(255,255,255,0.13)')
+        .attr('stroke-width', d => visited[+d.id] ? 0.8 : 0.4)
+        .attr('data-id', d => d.id)
+        .style('cursor', d => visited[+d.id] ? 'pointer' : 'default')
+        .on('mousemove', function(event, d) {
+          const v = visited[+d.id];
+          if (!v) return;
+          const rect = mapWrap.getBoundingClientRect();
+          tooltip.innerHTML = `<strong>${v.emoji} ${v.name}</strong><span>${v.trips} trip${v.trips>1?'s':''} · "${v.highlight}"</span>`;
+          tooltip.style.left = (event.clientX - rect.left + 14) + 'px';
+          tooltip.style.top  = (event.clientY - rect.top  - 44) + 'px';
+          tooltip.style.opacity = '1';
+        })
+        .on('mouseleave', () => { tooltip.style.opacity = '0'; });
+
+      // Country borders (internal)
+      svg.append('path')
+        .datum(topojson.mesh(topo, topo.objects.countries, (a,b) => a !== b))
+        .attr('d', path)
+        .attr('fill', 'none')
+        .attr('stroke', 'rgba(255,255,255,0.08)')
+        .attr('stroke-width', 0.3);
+
+      // Animated pin style
+      const pinStyle = document.createElement('style');
+      pinStyle.textContent = `
+        @keyframes mapPulse {
+          0%   { r: 7;  opacity: 0.7; }
+          100% { r: 18; opacity: 0; }
+        }
+        .pin-pulse { animation: mapPulse 2.4s ease-out infinite; }
+        .pin-g:nth-child(2n)  .pin-pulse { animation-delay: 0.4s; }
+        .pin-g:nth-child(3n)  .pin-pulse { animation-delay: 0.9s; }
+        .pin-g:nth-child(5n)  .pin-pulse { animation-delay: 1.4s; }
+        .visited-country { transition: fill .2s; }
+        .visited-country:hover { fill: rgba(196,134,74,0.95) !important; filter: url(#glow); }
+      `;
+      document.head.appendChild(pinStyle);
+
+      // Pins using projected centroid
+      Object.entries(visited).forEach(([numId, v], i) => {
+        const feature = countries.features.find(f => +f.id === +numId);
+        if (!feature) return;
+        const centroid = path.centroid(feature);
+        if (!centroid || isNaN(centroid[0])) return;
+        const [px, py] = centroid;
+
+        const g = svg.append('g')
+          .attr('class', 'pin-g')
+          .attr('data-id', numId)
+          .style('cursor', 'pointer')
+          .on('mousemove', function(event) {
+            const rect = mapWrap.getBoundingClientRect();
+            tooltip.innerHTML = `<strong>${v.emoji} ${v.name}</strong><span>${v.trips} trip${v.trips>1?'s':''} · "${v.highlight}"</span>`;
+            tooltip.style.left = (event.clientX - rect.left + 14) + 'px';
+            tooltip.style.top  = (event.clientY - rect.top  - 44) + 'px';
+            tooltip.style.opacity = '1';
+          })
+          .on('mouseleave', () => { tooltip.style.opacity = '0'; });
+
+        // Outer pulse
+        g.append('circle')
+          .attr('cx', px).attr('cy', py).attr('r', 7)
+          .attr('fill', 'rgba(155,106,53,0.25)')
+          .attr('class', 'pin-pulse');
+
+        // Inner glow halo
+        g.append('circle')
+          .attr('cx', px).attr('cy', py).attr('r', 6)
+          .attr('fill', 'rgba(196,134,74,0.3)')
+          .attr('filter', 'url(#pinGlow)');
+
+        // Pin dot
+        g.append('circle')
+          .attr('cx', px).attr('cy', py).attr('r', 4)
+          .attr('fill', '#9B6A35')
+          .attr('stroke', '#DDD4B8')
+          .attr('stroke-width', 1.5)
+          .attr('filter', 'url(#pinGlow)');
+      });
     }
-  };
 
-  function openTrip(id) {
-    var t = trips[id];
-    var photo = document.getElementById('modal-photo');
-    photo.style.background = t.bg;
-    photo.style.fontSize = '5rem';
-    var emoji = photo.querySelector('span') || document.createElement('span');
-    emoji.textContent = t.emoji;
-    emoji.style.cssText = 'position:absolute;opacity:0.22;font-size:5rem;';
-    photo.insertBefore(emoji, photo.firstChild);
-    document.getElementById('modal-tag').textContent = t.tag;
-    document.getElementById('modal-location').textContent = t.location;
-    document.getElementById('modal-name').textContent = t.name;
-    document.getElementById('modal-desc').textContent = t.desc;
-    document.getElementById('modal-price').textContent = t.price;
-    document.getElementById('modal-duration').textContent = t.duration;
-    document.getElementById('modal-group').textContent = t.group;
-    document.getElementById('modal-cta').href = t.link;
-    var modal = document.getElementById('trip-modal');
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  }
+    buildMap();
 
-  function closeTrip() {
-    document.getElementById('trip-modal').style.display = 'none';
-    document.body.style.overflow = '';
-    var photo = document.getElementById('modal-photo');
-    var span = photo.querySelector('span');
-    if (span) span.remove();
-  }
+    // ── SORT ──
+    const sortBtns = document.querySelectorAll('.sort-btn');
+    const tripGrid = document.querySelector('.trip-grid');
 
-  document.getElementById('trip-modal').addEventListener('click', function(e) {
-    if (e.target === this) closeTrip();
-  });
-</script>
+    sortBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const already = btn.classList.contains('active');
+        sortBtns.forEach(b => b.classList.remove('active'));
+        if (already) return; // clicking active again resets
+        btn.classList.add('active');
 
+        const [key, dir] = btn.dataset.sort.split('-');
+        const cards = [...tripGrid.querySelectorAll('.trip-card')];
+
+        cards.sort((a, b) => {
+          const va = parseFloat(a.dataset[key]);
+          const vb = parseFloat(b.dataset[key]);
+          return dir === 'asc' ? va - vb : vb - va;
+        });
+
+        // Animate out, reorder, animate in
+        cards.forEach(c => { c.style.opacity = '0'; c.style.transform = 'translateY(8px)'; });
+        setTimeout(() => {
+          cards.forEach(c => tripGrid.appendChild(c));
+          requestAnimationFrame(() => {
+            cards.forEach((c, i) => {
+              setTimeout(() => {
+                c.style.transition = 'opacity .25s, transform .25s';
+                c.style.opacity = '1';
+                c.style.transform = '';
+              }, i * 40);
+            });
+          });
+        }, 180);
+      });
+    });
+
+    // ── TAB SWITCHING ──
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+
+    // Follow button toggle
+    const followBtn = document.querySelector('.btn-follow');
+    followBtn.addEventListener('click', () => {
+      if (followBtn.textContent === 'Follow') {
+        followBtn.textContent = 'Following ✓';
+        followBtn.style.background = '#7a5228';
+      } else {
+        followBtn.textContent = 'Follow';
+        followBtn.style.background = '';
+      }
+    });
+
+    // Save button toggle
+    const saveBtn = document.querySelector('.btn-save');
+    saveBtn.addEventListener('click', () => {
+      saveBtn.textContent = saveBtn.textContent.includes('♡') ? '♥ Saved' : '♡ Save';
+    });
+  </script>
 </body>
 </html>
