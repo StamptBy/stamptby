@@ -94,24 +94,38 @@
     .social-link:hover { border-color: var(--brown); color: var(--brown); }
 
     /* ── TABS ── */
-    .filter-bar {
+    /* ── TABS BAR (sticky, row 1) ── */
+    .tabs-bar {
       position: sticky; top: 65px; z-index: 90;
       background: rgba(245,241,234,0.96); backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 24px; gap: 12px; flex-wrap: wrap;
+      display: flex; overflow-x: auto; scrollbar-width: none;
+      padding: 0 20px;
     }
-    .tabs-row {
-      display: flex; overflow-x: auto; scrollbar-width: none; flex: 1;
-    }
-    .tabs-row::-webkit-scrollbar { display: none; }
+    .tabs-bar::-webkit-scrollbar { display: none; }
     .tab {
-      padding: 14px 16px; font-size: 0.76rem; font-weight: 500; letter-spacing: 0.05em;
+      padding: 13px 16px; font-size: 0.76rem; font-weight: 500; letter-spacing: 0.05em;
       color: var(--mid); cursor: pointer; border-bottom: 2px solid transparent;
       margin-bottom: -1px; transition: color 0.2s, border-color 0.2s; white-space: nowrap;
+      user-select: none;
     }
     .tab.active { color: var(--brown); border-bottom-color: var(--brown); font-weight: 600; }
-    .filter-sort { display: flex; align-items: center; gap: 6px; padding: 10px 0; flex-shrink: 0; }
+
+    /* ── SORT DROPDOWN ── */
+    .sort-wrap {
+      display: flex; align-items: center; gap: 8px;
+      padding: 12px 0 4px;
+    }
+    .sort-label { font-size: 0.72rem; color: var(--mid); font-weight: 500; }
+    .sort-select {
+      appearance: none; -webkit-appearance: none;
+      background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%239B6A35' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 10px center;
+      border: 1.5px solid var(--border); color: var(--mid);
+      font-size: 0.76rem; font-family: "DM Sans", sans-serif; font-weight: 500;
+      padding: 6px 30px 6px 12px; border-radius: 20px; cursor: pointer;
+      transition: border-color 0.2s, color 0.2s; outline: none;
+    }
+    .sort-select:hover, .sort-select:focus { border-color: var(--brown); color: var(--brown); }
 
     /* ── CONTENT ── */
     .content { max-width: 980px; margin: 0 auto; padding: 32px 24px 80px; }
@@ -155,15 +169,7 @@
     }
     .btn-save:hover { background: var(--brown); color: white; }
 
-    /* ── SORT ── */
-    .sort-label { font-size: 0.72rem; color: var(--mid); font-weight: 500; }
-    .sort-btn {
-      padding: 5px 12px; border-radius: 20px; border: 1.5px solid var(--border);
-      background: white; color: var(--mid); font-size: 0.72rem; font-weight: 500;
-      cursor: pointer; font-family: "DM Sans", sans-serif; transition: all 0.2s; white-space: nowrap;
-    }
-    .sort-btn:hover { border-color: var(--brown); color: var(--brown); }
-    .sort-btn.active { background: var(--brown); border-color: var(--brown); color: white; }
+    /* sort styles handled above */
 
     /* ── TRIP GRID ── */
     .trip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -330,20 +336,12 @@
   </div>
 </div>
 
-<div class="filter-bar">
-  <div class="tabs-row">
-    <div class="tab active" data-filter="all">All Trips</div>
-    <div class="tab" data-filter="usa">USA</div>
-    <div class="tab" data-filter="international">International</div>
-    <div class="tab" data-filter="holiday">Holiday</div>
-    <div class="tab" data-filter="stays">Top Stays</div>
-  </div>
-  <div class="filter-sort">
-    <span class="sort-label">Sort:</span>
-    <button class="sort-btn" data-sort="price-asc">Price &#8593;</button>
-    <button class="sort-btn" data-sort="price-desc">Price &#8595;</button>
-    <button class="sort-btn" data-sort="likes-desc">&#9825; Most Saved</button>
-  </div>
+<div class="tabs-bar">
+  <div class="tab active" data-filter="all">All Trips</div>
+  <div class="tab" data-filter="usa">USA</div>
+  <div class="tab" data-filter="international">International</div>
+  <div class="tab" data-filter="holiday">Holiday</div>
+  <div class="tab" data-filter="stays">Top Stays</div>
 </div>
 
 <div class="content">
@@ -378,6 +376,15 @@
 
   <div class="section-header" id="tripsHeader" style="margin-top:28px;">
     <div class="section-title" id="tripsTitle">All Trips <span id="tripCount" style="font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:400;color:var(--mid);">&nbsp;&middot;&nbsp; 6 trips</span></div>
+    <div class="sort-wrap">
+      <span class="sort-label">Sort by</span>
+      <select class="sort-select" id="sortSelect">
+        <option value="">Default</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="likes-desc">&#9825; Most Saved</option>
+      </select>
+    </div>
   </div>
 
   <div class="trip-grid">
@@ -509,28 +516,26 @@
     this.textContent = this.textContent.includes('♥') ? '♡ Save' : '♥ Saved';
   });
 
-  document.querySelectorAll('.sort-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const already = this.classList.contains('active');
-      document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
-      if (already) return;
-      this.classList.add('active');
-      const [key, dir] = this.dataset.sort.split('-');
-      const grid = document.querySelector('.trip-grid');
-      const cards = [...grid.querySelectorAll('.trip-card')];
-      cards.sort((a, b) => {
-        const va = parseFloat(a.dataset[key]), vb = parseFloat(b.dataset[key]);
-        return dir === 'asc' ? va - vb : vb - va;
-      });
-      cards.forEach(c => { c.style.opacity='0'; c.style.transform='translateY(8px)'; });
-      setTimeout(() => {
-        cards.forEach(c => grid.appendChild(c));
-        requestAnimationFrame(() => cards.forEach((c,i) => setTimeout(() => {
-          c.style.transition='opacity .25s,transform .25s'; c.style.opacity='1'; c.style.transform='';
-        }, i*40)));
-      }, 180);
+  function sortCards(value) {
+    if (!value) return;
+    const [key, dir] = value.split('-');
+    const grid = document.querySelector('.trip-grid');
+    const cards = [...grid.querySelectorAll('.trip-card')].filter(c => c.style.display !== 'none');
+    cards.sort((a, b) => {
+      const va = parseFloat(a.dataset[key] || 0), vb = parseFloat(b.dataset[key] || 0);
+      return dir === 'asc' ? va - vb : vb - va;
     });
-  });
+    cards.forEach(c => { c.style.opacity='0'; c.style.transform='translateY(8px)'; });
+    setTimeout(() => {
+      cards.forEach(c => grid.appendChild(c));
+      requestAnimationFrame(() => cards.forEach((c,i) => setTimeout(() => {
+        c.style.transition='opacity .22s,transform .22s'; c.style.opacity='1'; c.style.transform='';
+      }, i*35)));
+    }, 150);
+  }
+
+  const sortSelect = document.getElementById('sortSelect');
+  if (sortSelect) sortSelect.addEventListener('change', () => sortCards(sortSelect.value));
 
   // Tab filtering
   const featured = document.querySelector('.featured-card');
