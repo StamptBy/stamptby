@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bianca Carolina — StamptBy</title>
-  <link rel="icon" type="image/svg+xml" href="AAABAAMAEBAAAAAAIACPAQAANgAAABgYAAAAACAAbgIAAMUBAAAgIAAAAAAgAEUDAAAzBAAAiVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAABVklEQVR4nJWSTUsCURSG78eM3vGrLFqI0MeuXEhE7aVo0SJtH7W0fxJUUv0aaRMRtG0xNdkItpGCorAZG+81nHtPC2EUK9SzOgfeh3Ne3oNbnoPGKTKW+l8AAKSUowIAwBiLJyYwxkMAUEpKSQixrEq5fME5V0oBwN8AAIQNgzFmRBKi3S4WD7gQsXhyYI8WqHVNf7KrL69vgFCchTIL8zdX18K/3MlvGxFDAeB+QCkVYpHToxOP88lkcmtzA/l+anrq+Oy89lA5LJW+PJcS0jsJYyz970Ih33j/qNm257U8Lpaz2fVczjRNhBH+fRKh4btqdWVt1XXdNsYzc7O3j7Z5b+3u7ymlAg+4mzQAUEobn47rONFoLJ1ONZvNev1Z07XM0iLnPLCOg9cAAF3TqEalVJ1Oh1Kq6zpCSAhBCBncEDCBJQDojv3qnodA198PT3qUGhv4AdYApfk3OuB5AAAAAElFTkSuQmCC">
+  <link rel="icon" type="image/jpeg" href="assets/stamptby logo.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=Dancing+Script:wght@600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -341,7 +341,7 @@
     <div class="section-title">Featured Trip</div>
   </div>
 
-  <div class="featured-card">
+  <div class="featured-card" id="trip-nyc">
     <div class="featured-img">
       <div class="featured-img-emoji">🇺🇸</div>
       <div class="featured-label">&#11088; Most Saved</div>
@@ -376,7 +376,7 @@
   </div>
 
   <div class="trip-grid">
-    <div class="trip-card" data-price="490" data-likes="892">
+    <div class="trip-card" id="trip-chicago" data-price="490" data-likes="892">
       <div class="trip-card-img" style="background:linear-gradient(135deg,#e8d5a3,#c4a87a);">&#127482;&#127480;
         <div class="card-tag">3 days</div><div class="card-saves">&#9825; 892</div>
       </div>
@@ -387,7 +387,7 @@
         <div class="trip-card-footer"><div class="trip-price">from $490<span class="trip-price-sub"> /person</span></div><button class="btn-card-book">Book</button></div>
       </div>
     </div>
-    <div class="trip-card" data-price="680" data-likes="541">
+    <div class="trip-card" id="trip-miami" data-price="680" data-likes="541">
       <div class="trip-card-img" style="background:linear-gradient(135deg,#c9d8e8,#7a9ec4);">&#127796;
         <div class="card-tag">5 days</div><div class="card-saves">&#9825; 541</div>
       </div>
@@ -398,7 +398,7 @@
         <div class="trip-card-footer"><div class="trip-price">from $680<span class="trip-price-sub"> /person</span></div><button class="btn-card-book">Book</button></div>
       </div>
     </div>
-    <div class="trip-card" data-price="820" data-likes="703">
+    <div class="trip-card" id="trip-sanjuan" data-price="820" data-likes="703">
       <div class="trip-card-img" style="background:linear-gradient(135deg,#e8d5c9,#c4987a);">&#127477;&#127479;
         <div class="card-tag">4 days</div><div class="card-saves">&#9825; 703</div>
       </div>
@@ -409,7 +409,7 @@
         <div class="trip-card-footer"><div class="trip-price">from $820<span class="trip-price-sub"> /person</span></div><button class="btn-card-book">Book</button></div>
       </div>
     </div>
-    <div class="trip-card" data-price="1100" data-likes="448">
+    <div class="trip-card" id="trip-nice" data-price="1100" data-likes="448">
       <div class="trip-card-img" style="background:linear-gradient(135deg,#c9d4e8,#6a7fc4);">&#127467;&#127479;
         <div class="card-tag">6 days</div><div class="card-saves">&#9825; 448</div>
       </div>
@@ -420,7 +420,7 @@
         <div class="trip-card-footer"><div class="trip-price">from $1,100<span class="trip-price-sub"> /person</span></div><button class="btn-card-book">Book</button></div>
       </div>
     </div>
-    <div class="trip-card" data-price="950" data-likes="612">
+    <div class="trip-card" id="trip-italy" data-price="950" data-likes="612">
       <div class="trip-card-img" style="background:linear-gradient(135deg,#e8c9c9,#c47a7a);">&#127470;&#127481;
         <div class="card-tag">7 days</div><div class="card-saves">&#9825; 612</div>
       </div>
@@ -536,14 +536,14 @@
 
   // ── MAP — city pins, brand colors, zoom/pan ──
   const cities = [
-    { name: 'New York City', emoji: '🗽', trips: 4, note: 'NYC Long Weekend',    lng: -74.006,  lat: 40.713 },
-    { name: 'Chicago',       emoji: '🏙️', trips: 1, note: 'Chicago in 3 Days',  lng: -87.630,  lat: 41.878 },
-    { name: 'Miami',         emoji: '🌴', trips: 1, note: 'Miami Girls Trip',    lng: -80.192,  lat: 25.762 },
-    { name: 'San Juan',      emoji: '🌊', trips: 1, note: 'Puerto Rico Getaway', lng: -66.106,  lat: 18.466 },
-    { name: 'Nice',          emoji: '🇫🇷', trips: 1, note: 'Nice & Monaco',      lng:   7.262,  lat: 43.710 },
-    { name: 'Rome',          emoji: '🏛️', trips: 1, note: 'Rome & Florence',    lng:  12.496,  lat: 41.903 },
-    { name: 'Florence',      emoji: '🎨', trips: 1, note: 'Pisa & Florence',     lng:  11.256,  lat: 43.770 },
-    { name: 'Colima',        emoji: '🌋', trips: 1, note: 'Colima & Comala',     lng:-103.724,  lat: 19.245 },
+    { name: 'New York City', emoji: '🗽', trips: 4, note: 'NYC Long Weekend',    lng: -74.006,  lat: 40.713, cardId: 'trip-nyc'     },
+    { name: 'Chicago',       emoji: '🏙️', trips: 1, note: 'Chicago in 3 Days',  lng: -87.630,  lat: 41.878, cardId: 'trip-chicago' },
+    { name: 'Miami',         emoji: '🌴', trips: 1, note: 'Miami Girls Trip',    lng: -80.192,  lat: 25.762, cardId: 'trip-miami'   },
+    { name: 'San Juan',      emoji: '🌊', trips: 1, note: 'Puerto Rico Getaway', lng: -66.106,  lat: 18.466, cardId: 'trip-sanjuan' },
+    { name: 'Nice',          emoji: '🇫🇷', trips: 1, note: 'Nice & Monaco',      lng:   7.262,  lat: 43.710, cardId: 'trip-nice'    },
+    { name: 'Rome',          emoji: '🏛️', trips: 1, note: 'Rome & Florence',    lng:  12.496,  lat: 41.903, cardId: 'trip-italy'   },
+    { name: 'Florence',      emoji: '🎨', trips: 1, note: 'Pisa & Florence',     lng:  11.256,  lat: 43.770, cardId: 'trip-italy'   },
+    { name: 'Colima',        emoji: '🌋', trips: 1, note: 'Colima & Comala',     lng:-103.724,  lat: 19.245, cardId: null           },
   ];
 
   async function buildMap() {
@@ -643,6 +643,18 @@
       const ty = H/2 - scale * cy;
       svg.transition().duration(700).ease(d3.easeCubicInOut)
         .call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(scale));
+      // Scroll to and highlight the matching trip card
+      if (city.cardId) {
+        const card = document.getElementById(city.cardId);
+        if (card) {
+          setTimeout(() => {
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            card.style.outline = '2px solid #8B3535';
+            card.style.outlineOffset = '3px';
+            setTimeout(() => { card.style.outline = ''; card.style.outlineOffset = ''; }, 2000);
+          }, 800);
+        }
+      }
     }
 
     cities.forEach(city => {
