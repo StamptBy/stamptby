@@ -223,25 +223,30 @@
     .btn-card-book:hover { background: #7a5228; }
 
     /* ── PICKS ── */
-    .picks-scroll { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: none; }
-    .picks-scroll::-webkit-scrollbar { display: none; }
+    .picks-scroll { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .pick-card {
-      flex-shrink: 0; width: 180px; background: white; border-radius: 12px;
-      border: 1px solid var(--border); overflow: hidden; transition: transform 0.2s; cursor: pointer;
+      background: white; border-radius: 12px;
+      border: 1px solid var(--border); overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s; cursor: pointer;
+      box-shadow: 0 2px 8px rgba(155,106,53,0.06);
     }
-    .pick-card:hover { transform: translateY(-2px); }
-    .pick-img { height: 110px; display: flex; align-items: center; justify-content: center; font-size: 2.6rem; }
-    .pick-body { padding: 12px; }
-    .pick-name { font-size: 0.82rem; font-weight: 600; color: var(--black); }
-    .pick-loc { font-size: 0.7rem; color: var(--mid); margin-top: 2px; }
-    .pick-price { font-size: 0.75rem; font-weight: 700; color: var(--brown); margin-top: 6px; }
+    .pick-card:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(155,106,53,0.13); }
+    .pick-img {
+      height: 148px; position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center; font-size: 2.6rem; background: #c8b590;
+    }
+    .pick-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .pick-body { padding: 14px 16px 16px; }
+    .pick-name { font-family: "Playfair Display", serif; font-size: 0.95rem; font-weight: 700; color: var(--black); margin-bottom: 2px; }
+    .pick-loc { font-size: 0.72rem; color: var(--mid); margin-bottom: 10px; }
+    .pick-price { font-size: 0.8rem; font-weight: 700; color: var(--brown); margin-bottom: 10px; }
+    .pick-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid var(--border); }
     .pick-btn {
-      display: block; width: 100%; margin-top: 8px; background: var(--offwhite);
-      border: 1px solid var(--border); color: var(--brown); border-radius: 18px;
-      padding: 6px 0; font-size: 0.68rem; font-weight: 500; cursor: pointer;
-      font-family: "DM Sans", sans-serif; text-align: center; transition: background 0.2s, color 0.2s;
+      background: var(--brown); color: white; border: none; border-radius: 18px;
+      padding: 7px 16px; font-size: 0.72rem; font-weight: 500; cursor: pointer;
+      font-family: "DM Sans", sans-serif; transition: background 0.2s; letter-spacing: 0.02em;
     }
-    .pick-btn:hover { background: var(--brown); color: white; }
+    .pick-btn:hover { background: #7a5228; }
 
     /* ── MAP ── */
     .map-wrap { background: #2a1e10; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); position: relative; }
@@ -309,7 +314,8 @@
       .map-stat { flex: 1; padding: 10px 4px; }
       .map-stat-num { font-size: 0.95rem; }
       .map-stat-label { font-size: 0.5rem; }
-      .picks-scroll { padding-bottom: 4px; }
+      .picks-scroll { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .pick-card { width: auto; }
       .pick-card { width: 155px; }
     }
     @media (max-width: 380px) {
@@ -482,11 +488,46 @@
       <div class="section-count">12 picks</div>
     </div>
     <div class="picks-scroll">
-      <div class="pick-card"><div class="pick-img"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&q=80" alt="The William Vale" /></div><div class="pick-body"><div class="pick-name">The William Vale</div><div class="pick-loc">Brooklyn, New York</div><div class="pick-price">from $245/night</div><button class="pick-btn">Book via Booking.com</button></div></div>
-      <div class="pick-card"><div class="pick-img"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&q=80" alt="Goodtime Hotel Miami" /></div><div class="pick-body"><div class="pick-name">The Goodtime Hotel</div><div class="pick-loc">Miami Beach, FL</div><div class="pick-price">from $310/night</div><button class="pick-btn">Book via Booking.com</button></div></div>
-      <div class="pick-card"><div class="pick-img"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80" alt="El Convento San Juan" /></div><div class="pick-body"><div class="pick-name">El Convento Hotel</div><div class="pick-loc">Old San Juan, PR</div><div class="pick-price">from $195/night</div><button class="pick-btn">Book via Booking.com</button></div></div>
-      <div class="pick-card"><div class="pick-img"><img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=400&q=80" alt="Hotel Negresco Nice" /></div><div class="pick-body"><div class="pick-name">H&ocirc;tel Negresco</div><div class="pick-loc">Nice, France</div><div class="pick-price">from $380/night</div><button class="pick-btn">Book via Booking.com</button></div></div>
-      <div class="pick-card"><div class="pick-img"><img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&q=80" alt="Hotel Raphael Rome" /></div><div class="pick-body"><div class="pick-name">Hotel Raphael</div><div class="pick-loc">Rome, Italy</div><div class="pick-price">from $290/night</div><button class="pick-btn">Book via Booking.com</button></div></div>
+      <div class="pick-card">
+        <div class="pick-img"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80" alt="The William Vale" /></div>
+        <div class="pick-body">
+          <div class="pick-name">The William Vale</div>
+          <div class="pick-loc">Brooklyn, New York</div>
+          <div class="pick-footer"><div class="pick-price">from $245/night</div><button class="pick-btn">Book</button></div>
+        </div>
+      </div>
+      <div class="pick-card">
+        <div class="pick-img"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80" alt="The Goodtime Hotel" /></div>
+        <div class="pick-body">
+          <div class="pick-name">The Goodtime Hotel</div>
+          <div class="pick-loc">Miami Beach, FL</div>
+          <div class="pick-footer"><div class="pick-price">from $310/night</div><button class="pick-btn">Book</button></div>
+        </div>
+      </div>
+      <div class="pick-card">
+        <div class="pick-img"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="El Convento Hotel" /></div>
+        <div class="pick-body">
+          <div class="pick-name">El Convento Hotel</div>
+          <div class="pick-loc">Old San Juan, PR</div>
+          <div class="pick-footer"><div class="pick-price">from $195/night</div><button class="pick-btn">Book</button></div>
+        </div>
+      </div>
+      <div class="pick-card">
+        <div class="pick-img"><img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80" alt="Hôtel Negresco" /></div>
+        <div class="pick-body">
+          <div class="pick-name">H&ocirc;tel Negresco</div>
+          <div class="pick-loc">Nice, France</div>
+          <div class="pick-footer"><div class="pick-price">from $380/night</div><button class="pick-btn">Book</button></div>
+        </div>
+      </div>
+      <div class="pick-card">
+        <div class="pick-img"><img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80" alt="Hotel Raphael" /></div>
+        <div class="pick-body">
+          <div class="pick-name">Hotel Raphael</div>
+          <div class="pick-loc">Rome, Italy</div>
+          <div class="pick-footer"><div class="pick-price">from $290/night</div><button class="pick-btn">Book</button></div>
+        </div>
+      </div>
     </div>
   </div>
 
